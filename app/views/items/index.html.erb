@@ -1,1 +1,16 @@
 <h1>index</h1>
+
+
+ <% url = "https://www.trolley.co.uk/search/?q=Frozen" %>
+
+ <% html_file = URI.open(url).read %>
+ <% html_doc = Nokogiri::HTML(html_file) %>
+ <% search_results = html_doc.search(".product-item") %>
+ <% search_results.each do |search_result| %>
+  <% each_item = html_doc.search("._brand") %>
+    <% each_item.each do |each| %>
+      <% each_item.each do |each| %>
+      <%= each.text.strip %> <br>
+      <% end %>
+    <% end %>
+  <% end %>

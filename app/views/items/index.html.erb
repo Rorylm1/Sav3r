@@ -20,13 +20,7 @@ const timer = setTimeout((event) => {
 
 
 
-
-
-
-<%# if search bar triggered -- ED %>
-
  <% url = "https://www.trolley.co.uk/browse/baby-toddler-kids" %>
-
 
 
 
@@ -34,35 +28,33 @@ const timer = setTimeout((event) => {
  <% html_doc = Nokogiri::HTML(html_file) %>
  <% search_results = html_doc.search(".product-item") %>
  <% search_results.each do |search_result| %>
-    <% name = search_result.search("._desc").text.strip %>
-    <% price = search_result.search("._price").text.strip %>
-    <% brand =search_result.search("._brand").text.strip %>
-    <% volume = search_result.search("._size").text.strip %> <br>
-    <% category = "baby, toddler & kids" %>
-    <% @image_link = search_result['src'] %>
-        <% Item.new(name: name,
-                    brand: brand,
-                    volume: volume,
-                    category: category
+    <% @name = search_result.search("._desc").text.strip %>
+    <% @price = search_result.search("._price").text.strip %>
+    <% @brand =search_result.search("._brand").text.strip %>
+    <% @volume = search_result.search("._size").text.strip %> <br>
+    <% @category = "baby, toddler & kids" %>
+    <% @image_link = search_result.search("._img src") %>
+        <% Item.new(name: @name,
+                    brand: @brand,
+                    volume: @volume,
+                    category: @category
                  )%>
-    <% end %>
-
-
  <div class="wrapper">
   <div class="cards">
     <div class="img">
-        <img src='<%= "https://www.trolley.co.uk#{@image_link}" %>'>
+        <%= @image_link %>
     </div>
 
-    <div class="brand">
-      <% brands = html_doc.search("._brand") %>
-      <% brands.each do brands %>
+    <div class="name">
+      <%= @name %>
     </div>
-    
+
     <div class="price">
-
+      <%= @price %>
     </div>
 
   </div>
+    <% end %>
+
+
 </div>
-   <% end %>

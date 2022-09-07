@@ -17,6 +17,7 @@
 <%# </script> %>
 
 
+
 <%# <div class="init-container init-page">
   <%# insert image here %>
   <%# <div class ="init-page init-img"> %>
@@ -25,9 +26,11 @@
 <%# </div> %>
 
 
+
 <div class="wrapper">
   <div class="cards">
   <% @items.each do |item| %>
+   <%= link_to item_path(item) do %>
         <div class="each-card">
           <div class="image">
           <img src="<%= item.image %>" alt="">
@@ -41,6 +44,7 @@
           <p>£ <%= item.price %></p>
           </div>
         </div>
+      <% end %>
     <% end %>
   </div>
 

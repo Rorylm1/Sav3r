@@ -71,7 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_141655) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "link"
-
   end
 
   create_table "order_histories", force: :cascade do |t|

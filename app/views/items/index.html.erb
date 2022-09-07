@@ -21,20 +21,20 @@ const timer = setTimeout((event) => {
 
 <div class="wrapper">
   <div class="cards">
- <% @items.each do |item| %>
-    <div class="each-card">
-      <div class="image">
-      <img src="<%= item.image %>" alt="">
-      </div>
+  <% @items.each do |item| %>
+        <div class="each-card">
+          <div class="image">
+          <img src="<%= item.image %>" alt="">
+          </div>
 
-      <div class="name">
-        <%= item.name %>
-      </div>
+          <div class="name">
+            <%= item.name %>
+          </div>
 
-      <div class="price">
-      <p>£ <%= item.price %></p>
-      </div>
-    </div>
+          <div class="price">
+          <p>£ <%= item.price %></p>
+          </div>
+        </div>
     <% end %>
   </div>
 

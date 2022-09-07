@@ -1,23 +1,31 @@
 <h1>index</h1>
 
 
-<script>console.log("hello")
-const timer = setTimeout((event) => {
+<%# <script>console.log("hello") %>
+<%# const timer = setTimeout((event) => {
   const list = document.querySelectorAll(".init-page")
   list.forEach((element) => {
   element.classList.add("fade-out");
 })
-}, 1500);
-</script>
+}, 1500); %>
+<%# </script> %>
+
+<%# <script> %>
+<%# const timer = setTimeout((event) => { %>
+<%# document.querySelectorAll(".init-page").forEach(el => el.remove()); %>
+<%# }, 3000) %>
+<%# </script> %>
+
 
 
 <%# <div class="init-container init-page">
   <%# insert image here %>
-  <%# <div class ="init-page init-img">
-  <%= cl_image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662483567/bkkuejbfakl0vcfqycat.png", crop: :fill %>
-  <%# </div>
-</div>
- %>
+  <%# <div class ="init-page init-img"> %>
+  <%# <%= cl_image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662483567/bkkuejbfakl0vcfqycat.png", crop: :fill %>
+  <%# </div> %>
+<%# </div> %>
+
+
 
 <div class="wrapper">
   <div class="cards">

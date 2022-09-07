@@ -66,11 +66,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_102925) do
     t.string "brand"
     t.string "volume"
     t.string "category"
-    t.bigint "shop_id", null: false
+    t.string "shop"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.index ["shop_id"], name: "index_items_on_shop_id"
   end
 
   create_table "order_histories", force: :cascade do |t|
@@ -81,12 +80,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_102925) do
     t.datetime "updated_at", null: false
     t.index ["basket_id"], name: "index_order_histories_on_basket_id"
     t.index ["item_id"], name: "index_order_histories_on_item_id"
-  end
-
-  create_table "shops", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,7 +99,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_102925) do
   add_foreign_key "baskets", "users"
   add_foreign_key "favourites", "items"
   add_foreign_key "favourites", "users"
-  add_foreign_key "items", "shops"
   add_foreign_key "order_histories", "baskets"
   add_foreign_key "order_histories", "items"
 end

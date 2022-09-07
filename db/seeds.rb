@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts "starting"
+puts "starting items"
+Shop.destroy_all
 Item.destroy_all
-puts "destroyed"
+puts "destroyed items"
+
 Item::CATEGORIES.each do |category|
 
 
@@ -47,3 +49,6 @@ end
 puts "done #{category}"
 end
 puts "done"
+
+puts "creating initial basket"
+# Basket.create!

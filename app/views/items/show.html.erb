@@ -1,9 +1,37 @@
 <%= @item.name %>
 <%= @item.link %>
 
-<% @item.shops.each do |shop| %>
-<%= shop.name %>
-<%= shop.price %>
-<% end %>
+
+
 
 <p>hi</p>
+
+<div class="wrapper">
+  <div class="cards">
+    <div class="each-card">
+      <div class="image">
+        <img src="<%= @item.image %>" alt="">
+      </div>
+
+      <div class="name">
+            <%= @item.name %>
+      </div>
+
+      <div class="brand">
+        <%=  @item.brand%>
+      </div>
+
+      <div class="volume">
+        <%= @item.volume %>
+      </div>
+
+    <div class="each-card">
+    <% @item.shops.each do |shop| %>
+      <%= shop.name %>
+      <p><strong>£<%= '%.2f' % shop.price %></strong></p>
+      <br>
+    <% end %>
+    </div>
+  <%= link_to "Add to Basket", basket_path, class: 'btn btn-success text-white category-button', style: 'padding-bottom: 25px; font-size: smaller; vertical-align: text-bottom; width: 80%; height: 15px; margin: 2px;  background-color: #06D6A0 !important; margin-left: 50px' %> <br>
+  </div>
+</div>

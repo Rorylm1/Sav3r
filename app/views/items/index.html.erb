@@ -1,7 +1,8 @@
 <h1>index</h1>
 
 
- <% url = "https://www.trolley.co.uk/browse/baby-toddler-kids" %>
+
+<% url = "https://www.trolley.co.uk/browse/baby-toddler-kids" %>
 
  <% html_file = URI.open(url).read %>
  <% html_doc = Nokogiri::HTML(html_file) %>

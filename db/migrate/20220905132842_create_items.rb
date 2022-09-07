@@ -7,7 +7,7 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.string :brand
       t.string :volume
       t.string :category
-      t.references :shop, null: false, foreign_key: true
+      t.string :shop
 
       t.timestamps
     end

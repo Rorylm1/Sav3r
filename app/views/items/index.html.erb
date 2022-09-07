@@ -20,8 +20,9 @@ const timer = setTimeout((event) => {
 
 
  <div class="wrapper">
+ <% @items.each do |item| %>
   <div class="cards">
- 
+
 
     <div class="name">
       <%= item.name %>

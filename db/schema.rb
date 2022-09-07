@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_102925) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_141655) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,11 +66,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_102925) do
     t.string "brand"
     t.string "volume"
     t.string "category"
-    t.bigint "shop_id", null: false
+    t.string "shop"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.index ["shop_id"], name: "index_items_on_shop_id"
+    t.string "link"
   end
 
   create_table "order_histories", force: :cascade do |t|
@@ -84,9 +84,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_102925) do
   end
 
   create_table "shops", force: :cascade do |t|
+    t.bigint "item_id", null: false
     t.string "name"
+    t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_shops_on_item_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,7 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_102925) do
   add_foreign_key "baskets", "users"
   add_foreign_key "favourites", "items"
   add_foreign_key "favourites", "users"
-  add_foreign_key "items", "shops"
   add_foreign_key "order_histories", "baskets"
   add_foreign_key "order_histories", "items"
+  add_foreign_key "shops", "items"
 end

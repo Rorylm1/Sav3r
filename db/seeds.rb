@@ -29,13 +29,16 @@ image_link = search_result.search("._img img")
 img = image_link[0].to_s
 product_id = img.match(/\w*\d/)
 img_url = "https://www.trolley.co.uk/img/product/#{product_id}"
+# item_link = search_result.search("a href").text.strip
+# puts item_link
 
 Item.create(name: name,
                 brand: brand,
                 volume: volume,
                 category: category,
                 price: ('%.2f' % price),
-                image: img_url
+                image: img_url,
+                link: product_id.to_s
              )
 
 

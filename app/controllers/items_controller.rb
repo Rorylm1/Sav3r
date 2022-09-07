@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   require "open-uri"
 
   def index
-    # @items = Items.all
+    @items = Item.all
+
   end
 end

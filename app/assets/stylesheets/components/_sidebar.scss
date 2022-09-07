@@ -4,6 +4,7 @@
   height: 844px;
   left: 0px;
   top: 0px;
+  display: none;
 }
 
 .sidebar-navbar{
@@ -13,6 +14,36 @@
   left: 0px;
   top: 0px;
   background: #EF476F;
+}
+.sidebar-nav-btn{
+  position: absolute;
+  display: flex;
+  width: 298px;
+  height: 37px;
+  left: 0px;
+  top: 90px;
+
+}
+.sidebar-icon-box{
+  width: 54px;
+  height: 37px;
+  left: 0px;
+  top: 90px;
+}
+
+.bold-white-txt{
+  position: absolute;
+  width: 169px;
+  height: 19px;
+  left: 62px;
+  top: 99px;
+  font-weight: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  color: white;
+
 }
 
 .sidebar-btn{

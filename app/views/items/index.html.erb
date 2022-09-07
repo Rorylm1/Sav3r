@@ -1,16 +1,41 @@
 <h1>index</h1>
 
 
- <% url = "https://www.trolley.co.uk/search/?q=Frozen" %>
+ <% url = "https://www.trolley.co.uk/browse/baby-toddler-kids" %>
 
  <% html_file = URI.open(url).read %>
  <% html_doc = Nokogiri::HTML(html_file) %>
  <% search_results = html_doc.search(".product-item") %>
  <% search_results.each do |search_result| %>
-  <% each_item = html_doc.search("._brand") %>
-    <% each_item.each do |each| %>
-      <% each_item.each do |each| %>
-      <%= each.text.strip %> <br>
-      <% end %>
+    <% name = search_result.search("._desc").text.strip %>
+    <% price = search_result.search("._price").text.strip %>
+    <% brand =search_result.search("._brand").text.strip %>
+    <% volume = search_result.search("._size").text.strip %> <br>
+    <% category = "baby, toddler & kids" %>
+    <% @image_link = search_result['src'] %>
+        <% Item.new(name: name,
+                    brand: brand,
+                    volume: volume,
+                    category: category
+                 )%>
     <% end %>
-  <% end %>
+
+<%# <%= Item.name%>
+
+ <div class="wrapper">
+  <div class="cards">
+    <div class="img">
+        <img src='<%= "https://www.trolley.co.uk#{@image_link}" %>'>
+    </div>
+
+    <div class="brand">
+      <% brands = html_doc.search("._brand") %>
+      <% brands.each do brands %>
+    </div>
+    <div class="price">
+
+    </div>
+
+  </div>
+</div>
+   <% end %>

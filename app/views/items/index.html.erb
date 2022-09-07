@@ -21,18 +21,20 @@ const timer = setTimeout((event) => {
 
  <div class="wrapper">
   <div class="cards">
-    <div class="img">
-        <%= @image_link %>
-    </div>
+ 
 
     <div class="name">
-      <%= name %>
+      <%= item.name %>
     </div>
 
     <div class="price">
-      <%= price %>
+      <%= item.price %>
     </div>
 
+    <img src="<%= item.image %>" alt="">
+
+    <% end %>
+  </div>
   </div>
 
 

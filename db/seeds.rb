@@ -5,3 +5,31 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Item.destroy_all
+
+Item::CATEGORIES.each do |category|
+
+url = "https://www.trolley.co.uk/browse/#{category}"
+
+html_file = URI.open(url).read
+html_doc = Nokogiri::HTML(html_file)
+search_results = html_doc.search(".product-item")
+search_results.each do |search_result|
+name = search_result.search("._desc").text.strip
+price_string = search_result.search("._price").text.strip
+price =  price_string[1..-1].to_f
+brand =  search_result.search("._brand").text.strip
+volume = search_result.search("._size").text.strip
+category = "#{category}"
+image_link = search_result.search("._img src")
+
+Item.create(name: name,
+                brand: brand,
+                volume: volume,
+                category: category,
+                price: ('%.2f' % price)
+             )
+
+end
+end

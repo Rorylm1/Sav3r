@@ -4,9 +4,6 @@
   justify-content: space-around;
   align-items: flex-start;
 }
-.cards:hover {
- font-weight: bolder;
-}
 .each-card {
   width: 200px;
   height: 290px;
@@ -14,6 +11,10 @@
   text-align: center;
   border-radius: 12px;
   background-color: white;
+  transition: .6s ease-in-out;
+}
+.each-card {
+ transform: rotate3d(120deg);
 }
 
 .image img {

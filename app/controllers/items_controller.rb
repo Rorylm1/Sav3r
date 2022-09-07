@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
 
-
+    @item.shops.destroy_all
 
     @link_name = @item.name.gsub(" ", "-").downcase
 
@@ -25,6 +25,10 @@ class ItemsController < ApplicationController
       @shop_price = @shop_price_string[1..-1].to_f
       Shop.create!(item_id: @item.id, name: @shop_name, price: @shop_price)
     end
+
+    @item = Item.find(params[:id])
+
+
 
 
 

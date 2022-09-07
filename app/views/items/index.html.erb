@@ -1,7 +1,15 @@
 <h1>index</h1>
 
+<div class="init-container">
+<p>hi</p>
+  <%# insert image here %>
+  <img src="../app/assets/images/sav_logo.png" alt="hi">
+</div>
+
 
  <% url = "https://www.trolley.co.uk/browse/baby-toddler-kids" %>
+
+
 
  <% html_file = URI.open(url).read %>
  <% html_doc = Nokogiri::HTML(html_file) %>
@@ -20,7 +28,6 @@
                  )%>
     <% end %>
 
-<%# <%= Item.name%>
 
  <div class="wrapper">
   <div class="cards">
@@ -32,6 +39,7 @@
       <% brands = html_doc.search("._brand") %>
       <% brands.each do brands %>
     </div>
+    
     <div class="price">
 
     </div>

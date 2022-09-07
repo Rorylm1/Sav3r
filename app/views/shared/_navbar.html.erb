@@ -1,8 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+    <div>
+      <button class="navbar-brand"
+              data-controller="sidebar"
+              data-action="click->sidebar#enable">
+      <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662483567/bkkuejbfakl0vcfqycat.png" %>
+      </button>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,4 +37,6 @@
       </ul>
     </div>
   </div>
+
+
 </div>

@@ -10,3 +10,24 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar {
+  height: 70px;
+}
+.search-form-control {
+  display: flex;
+  height: 45px;
+}
+.form-control {
+  border-radius: 20px;
+}
+#search-button {
+  background-color: aliceblue;
+  width: 100px;
+  border-radius: 15px;
+  transition: .3s ease-in-out;
+}
+#search-button:hover {
+  background-color: rgb(8, 241, 164);
+  border: none;
+}

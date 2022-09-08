@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-decoration: none;
   // min-height: 100px;
   // width: 298px;
   // height: 127px;
@@ -54,21 +55,25 @@
 }
 
 .sidebar-btn{
-  position: absolute;
+  // position: absolute;
   display: flex;
+  justify-content: space-between;
+  flex-direction: row;
   width: 298px;
   height: 44px;
-  left: 0px;
-  top: 127px;
+  border-bottom: 1px solid rgb(207, 204, 204);
+  // left: 0px;
+  // top: 127px;
   background: white;
+  text-decoration: none;
 
 }
 .sidebar-btn-lft{
   position: absolute;
-  width: 238px;
-  height: 44px;
-  left: 0px;
-  top: 127px;
+  // width: 238px;
+  // height: 44px;
+  // left: 0px;
+  // top: 127px;
 }
 .bold-drk-text{
   // position: absolute;
@@ -82,6 +87,9 @@
   font-size: 15px;
   line-height: 18px;
   color: black;
+  margin-top: 12px;
+  margin-left: 10px;
+  text-decoration: none;
 
 }
 .sidebar-btn-rt{
@@ -105,4 +113,16 @@
   display: flex;
   align-items: center;
   color: black;
+}
+.btn-right-box{
+  height: 44px;
+  width: 60px;
+  margin-right: 10px;
+  padding-top: 9px;
+  text-align: right;
+
+
+}
+.btn-wrap{
+  padding-top: 1px;
 }

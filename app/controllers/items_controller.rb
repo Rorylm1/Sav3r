@@ -1,8 +1,14 @@
 class ItemsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
   require 'nokogiri'
   require "open-uri"
 
   def index
+    if params[:query].present?
+
+
+    end
+
     @items = Item.all
 
   end

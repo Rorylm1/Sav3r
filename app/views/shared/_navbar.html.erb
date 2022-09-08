@@ -6,6 +6,20 @@
       </button>
     </div>
 
+     <%= simple_form_for :search, url: items_path, method: :get do |f| %>
+      <div class="search-form-control form-group">
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "eg. Apple MacBook pro..."
+        %>
+
+        <button name="button" type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

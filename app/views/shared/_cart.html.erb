@@ -1,11 +1,12 @@
-<a href="/baskets/:basket_id/">
-<div class="cart-wrapper "
+
+<div class="cart-wrapper <%= "d-none" if @basket.items.count == 0 %>"
 
   data-cart-target="cartjs">
 
   <div class="footer-side">
   </div>
 
+<%= link_to "basket", basket_path(@basket) %>
   <div class="footer-center">
     <div class="text-red-bold">
       <p><strong>View basket</strong></p>
@@ -19,4 +20,3 @@
   </div>
 
 </div>
-</a>

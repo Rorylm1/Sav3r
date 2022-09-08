@@ -9,8 +9,8 @@ export default class extends Controller {
 
   }
   bar(e) {
-    console.log(this.sideTarget);
-    this.sideTarget.style.display = "block"
+    console.log(this.cartjsTarget);
+    this.cartjsTarget.style.display = "block"
 
   }
 

@@ -1,0 +1,19 @@
+.cart-wrapper{
+  height: 57px;
+  background: #FFC43D;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: none;
+}
+.footer-side{
+  width: 84px;
+}
+.text-red-bold{
+  text-align: center;
+  color: $red;
+  padding-top: 12px;
+}

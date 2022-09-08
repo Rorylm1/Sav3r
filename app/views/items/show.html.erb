@@ -32,6 +32,6 @@
       <br>
     <% end %>
     </div>
-  <%= link_to "Add to Basket", basket_path, class: 'btn btn-success text-white category-button', style: 'padding-bottom: 25px; font-size: smaller; vertical-align: text-bottom; width: 80%; height: 15px; margin: 2px;  background-color: #06D6A0 !important; margin-left: 50px' %> <br>
+  <%= link_to "Add to Basket", basket_item_order_histories_path(@basket, @item), class: 'btn btn-success text-white category-button', style: 'padding-bottom: 25px; font-size: smaller; vertical-align: text-bottom; width: 80%; height: 15px; margin: 2px;  background-color: #06D6A0 !important; margin-left: 50px', data: {turbo_method: :post} %> <br>
   </div>
 </div>

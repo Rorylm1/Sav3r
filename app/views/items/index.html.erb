@@ -38,13 +38,19 @@
           <img src="<%= item.image %>" alt="">
           </div>
 
-          <div class="name">
-            <%= item.name %> <br>
+          <div class="name-and-price">
+            <div class="name">
+              <%= item.name %> <br>
+            </div>
+
+            <div class="price">
+            <p>£ <%='%.2f' % item.price %></p>
+            </div>
+
+            <div class="button-to-add">
+            </div>
           </div>
 
-          <div class="price">
-          <p>£ <%='%.2f' % item.price %></p>
-          </div>
         </div>
       <% end %>
     <% end %>

@@ -1,4 +1,4 @@
 class OrderHistory < ApplicationRecord
-  has_many :baskets
-  has_many :items
+  belongs_to :basket
+  belongs_to :item
 end

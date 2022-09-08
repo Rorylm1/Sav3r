@@ -14,9 +14,20 @@
   border-radius: 12px;
   background-color: white;
   transition: .6s ease-in-out;
+  align-items: center;
+}
+.name-and-price {
+  height: 100%;
+}
+ a {
+  text-decoration: none;
 }
 .name {
   width: 15rem;
+  height: 70%;
+}
+.price {
+  padding-right: 70%;
 }
 
 .image img {
@@ -26,12 +37,6 @@
   object-fit: cover;
 }
 
-.name {
-  height: 20px;
-}
-.price {
-  height: 20px;
-}
 .image {
   height: 100px;
 

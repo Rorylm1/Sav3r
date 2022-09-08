@@ -5,11 +5,43 @@ class ItemsController < ApplicationController
 
   def index
     if params[:query].present?
+      @url = "https://www.trolley.co.uk/search/?from=search&q=#{params[:query]}"
+      @html_file = URI.open(@url).read
+      @html_doc = Nokogiri::HTML(@html_file)
+      @search_results = @html_doc.search(".products-grid .product-item")
+      @count = 0
+      @search_results.each do |search_result|
+        @search_result = search_result
+        @item_name = search_result.search("._desc").text.strip
+        @item_price_string = search_result.search("._price").text.strip
+        @item_price =  @item_price_string[1..-1].to_f
+        @item_brand =  search_result.search("._brand").text.strip
+        @item_volume = search_result.search("._size").text.strip
+        @item_image_link = search_result.search("._img img")
+        @item_img = @item_image_link[0].to_s
+        @item_product_id = @item_img.match(/\w*\d/)
+        @item_img_url = "https://www.trolley.co.uk/img/product/#{@item_product_id}"
 
+        Item.create(
+          name: @item_name,
+          brand: @item_brand,
+          volume: @item_volume,
+          price: ('%.2f' % @item_price),
+          image: @item_img_url,
+          link: @item_product_id.to_s
+        )
+
+        @count += 1
+      end
+      @items = Item.last(@count)
+
+    else
+
+      @items = Item.all
 
     end
 
-    @items = Item.all
+
 
   end
 
@@ -30,7 +62,7 @@ class ItemsController < ApplicationController
       @shop_name = search_result.search("title").text.strip
       @shop_price_string = search_result.search("._price").text.strip
       @shop_price = @shop_price_string[1..-1].to_f
-      Shop.create!(item_id: @item.id, name: @shop_name, price: @shop_price)
+      Shop.create!(item_id: @item.id, name: @shop_name, price: ('%.2f' % @shop_price))
     end
 
     @item = Item.find(params[:id])

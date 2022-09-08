@@ -25,7 +25,9 @@
   <%# </div> %>
 <%# </div> %>
 
-
+<% if params[:query].present? && @count == 0 %>
+<h2>Sorry your search returned no results</h2>
+<% end %>
 
 <div class="wrapper">
   <div class="cards">
@@ -41,7 +43,7 @@
           </div>
 
           <div class="price">
-          <p>£ <%= item.price %></p>
+          <p>£ <%='%.2f' % item.price %></p>
           </div>
         </div>
       <% end %>

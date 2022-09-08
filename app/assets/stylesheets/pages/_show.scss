@@ -1,3 +1,58 @@
 .show-header {
   margin: 0 auto;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.show-card {
+  width:200px;
+  height: 100%;
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  transition: .6s ease-in-out;
+  background: white;
+}
+
+.show-card-shop {
+  width:250px;
+  height: 100%;
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  transition: .6s ease-in-out;
+  background: white;
+}
+
+.show-image img{
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.show-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shop-info {
+
+
+  border-color: $red;
+
+  border-top: solid;
+}
+
+.basket-button {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+
+
 }

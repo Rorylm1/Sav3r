@@ -4,7 +4,9 @@
   <br>
     <li> <%= item.name %></li>
     <li> <%= item.description %></li>
-    <li> <%= item.price %></li>
+    <% item.shops.each do |shop| %>
+    <li> <%= shop.name %> <%= shop.price %></li>
+    <% end %>
     <br>
   <% end %>
 </ul>

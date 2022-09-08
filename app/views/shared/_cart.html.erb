@@ -1,22 +1,23 @@
 
-<div class="cart-wrapper <%= "d-none" if @basket.items.count == 0 %>"
+<%= link_to basket_path(@basket) do %>
+  <div class="cart-wrapper <%= "d-none" if @basket.items.count == 0 %>"
 
-  data-cart-target="cartjs">
+    data-cart-target="cartjs">
 
-  <div class="footer-side">
-  </div>
-
-<%= link_to "basket", basket_path(@basket) %>
-  <div class="footer-center">
-    <div class="text-red-bold">
-      <p><strong>View basket</strong></p>
+    <div class="footer-side">
     </div>
-  </div>
 
-  <div class="footer-side">
-    <div class="text-red-bold">
-      <p><strong>£ TO.DO</strong></p>
+    <div class="footer-center">
+      <div class="text-red-bold">
+        <p><strong>View basket</strong></p>
+      </div>
     </div>
-  </div>
 
-</div>
+    <div class="footer-side">
+      <div class="text-red-bold">
+        <p><strong>£ TO.DO</strong></p>
+      </div>
+    </div>
+
+  </div>
+  <% end %>

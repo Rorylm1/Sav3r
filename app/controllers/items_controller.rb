@@ -83,6 +83,7 @@ class ItemsController < ApplicationController
 
 
 
+
   def show
     # if current_user.baskets.last && current_user.baskets.last.completed == false
     #   @basket = current_user.baskets.last
@@ -94,6 +95,8 @@ class ItemsController < ApplicationController
     #   @basket.save
 
     # end
+
+
     @item = Item.find(params[:id])
 
     @item.shops.destroy_all

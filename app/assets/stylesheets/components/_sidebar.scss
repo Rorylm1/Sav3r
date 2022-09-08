@@ -1,7 +1,9 @@
+
+
 .sidebar-wrapper{
   position: absolute;
   width: 298px;
-  height: 844px;
+  height: 100vh;
   left: 0px;
   top: 0px;
   display: none;
@@ -81,8 +83,8 @@
   height: 18px;
   left: 10px;
   top: 138px;
-  font-family: 'Inter';
-  font-style: normal;
+  // font-family: 'Inter';
+  // font-style: normal;
   font-weight: 600;
   font-size: 15px;
   line-height: 18px;
@@ -125,4 +127,5 @@
 }
 .btn-wrap{
   padding-top: 1px;
+  height: 100vh;
 }

@@ -1,10 +1,16 @@
 <h1>Your Basket Has</h1>
 <ul>
+
   <% @items.each do |item| %>
   <br>
     <li> <%= item.name %></li>
-    <li> <%= item.description %></li>
-    <li> <%= item.price %></li>
+    <% item.shops.each do |shop| %>
+    <li> <%= shop.id %></li>
+    <br>
+    <li> <%= shop.name %></li>
+    <li> <%= shop.price %></li>
+    <br>
+    <% end %>
     <br>
   <% end %>
 </ul>

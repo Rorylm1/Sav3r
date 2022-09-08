@@ -84,15 +84,16 @@ class ItemsController < ApplicationController
 
 
   def show
-    if current_user.baskets.last && current_user.baskets.last.completed == false
-      @basket = current_user.baskets.last
-    else
-      @basket = Basket.new
-      @basket.user = current_user
-      @basket.completed = false
-      @basket.save
+    # if current_user.baskets.last && current_user.baskets.last.completed == false
+    #   @basket = current_user.baskets.last
+    # end
+    # else
+    #   @basket = Basket.new
+    #   @basket.user = current_user
+    #   @basket.completed = false
+    #   @basket.save
 
-    end
+    # end
     @item = Item.find(params[:id])
 
     @item.shops.destroy_all

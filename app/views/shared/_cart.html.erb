@@ -1,6 +1,6 @@
-
+<% invalid = @basket.items.count == 0 || current_page?(basket_path(@basket)) %>
 <%= link_to basket_path(@basket) do %>
-  <div class="cart-wrapper <%= "d-none" if @basket.items.count == 0 %>"
+  <div class="cart-wrapper <%= "d-none" if invalid %>"
 
     data-cart-target="cartjs">
 
@@ -15,7 +15,7 @@
 
     <div class="footer-side">
       <div class="text-red-bold">
-        <p><strong>£ TO.DO</strong></p>
+        <p><strong>£ <%=@basket.total_price %></strong></p>
       </div>
     </div>
 

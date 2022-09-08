@@ -46,44 +46,7 @@ class ItemsController < ApplicationController
   end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  def show
+ def show
     if current_user.baskets.last && current_user.baskets.last.completed == false
       @basket = current_user.baskets.last
     else

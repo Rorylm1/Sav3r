@@ -4,12 +4,10 @@
   <% @items.each do |item| %>
   <br>
     <li> <%= item.name %></li>
+
     <% item.shops.each do |shop| %>
-    <li> <%= shop.id %></li>
-    <br>
-    <li> <%= shop.name %></li>
-    <li> <%= shop.price %></li>
-    <br>
+    <li> <%= shop.name %> <%= shop.price %></li>
+
     <% end %>
     <br>
   <% end %>

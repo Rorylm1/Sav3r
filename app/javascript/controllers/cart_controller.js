@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="sidebar"
 export default class extends Controller {
-  static targets = ["side"]
+  static targets = ["cartjs"]
   connect() {
     // console.log("ciao");
     // console.log(this.sideTarget)

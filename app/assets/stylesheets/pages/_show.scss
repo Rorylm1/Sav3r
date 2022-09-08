@@ -17,7 +17,7 @@
 }
 
 .show-card-shop {
-  width:250px;
+  width:300px;
   height: 100%;
   margin-top: 20px;
   text-align: center;
@@ -43,16 +43,29 @@
 
 .shop-info {
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   border-color: $red;
 
   border-top: solid;
+  padding-right: 5px;
+  padding-left: 5px;
+
 }
 
 .basket-button {
     position: fixed;
     width: 100%;
     bottom: 0;
+
+
+}
+
+.shop-img img{
+  margin: 0 auto;
+  height: 25px;
 
 
 }

@@ -13,7 +13,6 @@
       </div>
 
 
-
        <div class="basket-button">
         <% if user_signed_in? %>
         <%= link_to "Add to Basket", basket_item_order_histories_path(@basket, @item), class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post}  %>

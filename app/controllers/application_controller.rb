@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       @basket.user = current_user
       @basket.completed = false
       @basket.save
-Item::BRA
+
       session[:basket_id] = @basket.id
     end
   end

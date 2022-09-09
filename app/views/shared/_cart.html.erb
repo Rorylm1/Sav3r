@@ -1,8 +1,8 @@
 <% invalid = @basket.items.count == 0 || current_page?(basket_path(@basket)) %>
-<%= link_to basket_path(@basket) do %>
+<%# <%= link_to basket_path(@basket) do %>
   <div class="cart-wrapper <%= "d-none" if invalid %>"
 
-    data-cart-target="cartjs">
+    data-cart-target="carts">
 
     <div class="footer-side">
     </div>
@@ -20,4 +20,4 @@
     </div>
 
   </div>
-  <% end %>
+  <%# <% end %>

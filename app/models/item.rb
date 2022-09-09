@@ -7,12 +7,12 @@ class Item < ApplicationRecord
 
   BRANDS = {}
 
-  BRANDS["Morrisons"] = "morrisons_blzsz4"
-  BRANDS["Tesco"] = "tesco_w6rgal"
-  BRANDS["Poundland"] = "poundland_qppk9u"
-  BRANDS["Sainsbury's"] = "sainsbury_s_en8ssv"
-  BRANDS["Aldi"] = "aldi_xcjrv8"
-  BRANDS["Asda"] = "asda_v6kw5g"
-  BRANDS["Co-op"] = "co-op_wjaopn"
+  BRANDS["Morrisons"] = "v1662653128/morrisons_blzsz4"
+  BRANDS["Tesco"] = "v1662653128/tesco_w6rgal"
+  BRANDS["Poundland"] = "v1662653128/poundland_qppk9u"
+  BRANDS["Sainsbury's"] = "v1662653128/sainsbury_s_en8ssv"
+  BRANDS["Aldi"] = "v1662653128/aldi_xcjrv8"
+  BRANDS["Asda"] = "v1662653128/asda_v6kw5g"
+  BRANDS["Co-op"] = "v1662653128/co-op_wjaopn"
 
 end

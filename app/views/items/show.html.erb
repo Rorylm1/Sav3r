@@ -14,12 +14,16 @@
         <p>Brand: <%=  @item.brand%></p> <br>
         <p>Quantity: <%= @item.volume %></p>
       </div>
-    </div>
+  </div>
+
     <div class="show-card-shop">
     <% @item.shops.first(8).each do |shop| %>
       <div class="shop-info">
       <% if shop %>
+      <div class="shop-name">
       <p><%= shop.name %> <strong>£<%= '%.2f' % shop.price %></strong></p>
+      </div>
+
       <div class="shop-img">
       <%# <% if Item::BRANDS.key?(shop.name) %>
       <%# <%= image_tag cl_image_path(Item::BRANDS[shop.name], crop: :fill) %>
@@ -44,15 +48,13 @@
 
       <% end %>
       <% end %>
-</div>
+      </div>
       </div>
 
     <% end %>
     </div>
 
-      <div class="basket-button">
+      <%# <div class="basket-button">
         <%= link_to "Add to Basket", basket_item_order_histories_path(@basket, @item), class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post} %> <br>
-      </div>
+      <%# </div> %>
     </div>
-
-  

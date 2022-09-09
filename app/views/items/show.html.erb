@@ -22,10 +22,13 @@
       </div>
     </div>
     <div class="show-card-shop">
-    <% @item.shops.first(5).each do |shop| %>
+    <% @item.shops.first(8).each do |shop| %>
       <div class="shop-info">
-      <%= shop.name %>
-      <p><strong>£<%= '%.2f' % shop.price %></strong></p>
+
+      <p><%= shop.name %> <strong>£<%= '%.2f' % shop.price %></strong></p>
+      <div class="shop-img">
+      <%= cl_image_tag Item::BRANDS["#{shop.name}"], crop: :fill %>
+      </div>
       </div>
 
     <% end %>

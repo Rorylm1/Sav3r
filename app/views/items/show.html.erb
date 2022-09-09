@@ -27,7 +27,7 @@
 
       <p><%= shop.name %> <strong>£<%= '%.2f' % shop.price %></strong></p>
       <div class="shop-img">
-      <%= cl_image_tag Item::BRANDS["#{shop.name}"], crop: :fill %>
+      <%= cl_image_tag Item::BRANDS[shop.name], crop: :fill %>
       </div>
       </div>
 

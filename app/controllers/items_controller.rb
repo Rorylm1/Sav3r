@@ -101,7 +101,7 @@ class ItemsController < ApplicationController
 
     @item.shops.destroy_all
 
-    @link_name = @item.name.gsub(" ", "-").gsub("&", "-").downcase
+    @link_name = @item.name.gsub(" ", "-").gsub("&", "-").gsub("+", "-").downcase
 
 
     @url = "https://www.trolley.co.uk/product/#{@link_name}/#{@item.link}"

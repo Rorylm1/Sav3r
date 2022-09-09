@@ -7,12 +7,12 @@ class Item < ApplicationRecord
 
   BRANDS = {}
 
-  BRANDS["Morrisons"] = "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/morrisons_blzsz4.png"
-  BRANDS["Tesco"] = "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/tesco_w6rgal.png"
-  BRANDS["Poundland"] = "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/poundland_qppk9u.png"
-  BRANDS["Sainsbury's"] = "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/sainsbury_s_en8ssv.png"
-  BRANDS["Aldi"] = "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/aldi_xcjrv8.png"
-  BRANDS["Asda"] = "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/asda_v6kw5g.png"
-  BRANDS["Co-op"] = "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662655318/co-op_wjaopn.png"
+  BRANDS["Morrisons"] = "morrisons_blzsz4"
+  BRANDS["Tesco"] = "tesco_w6rgal"
+  BRANDS["Poundland"] = "poundland_qppk9u"
+  BRANDS["Sainsbury's"] = "sainsbury_s_en8ssv"
+  BRANDS["Aldi"] = "aldi_xcjrv8"
+  BRANDS["Asda"] = "asda_v6kw5g"
+  BRANDS["Co-op"] = "co-op_wjaopn"
 
 end

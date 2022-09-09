@@ -14,6 +14,19 @@
         <p>Brand: <%=  @item.brand%></p> <br>
         <p>Quantity: <%= @item.volume %></p>
       </div>
+      
+    </div>
+    
+    <div class="show-card-shop">
+    <% @item.shops.first(8).each do |shop| %>
+      <div class="shop-info">
+      <p><%= shop.name %> <strong>£<%= '%.2f' % shop.price %></strong></p>
+      
+      <div class="shop-img">
+        <%= cl_image_tag Item::BRANDS[shop.name], crop: :fill %>
+      </div>
+
+      </div>
   </div>
   <div class="show-card-shop">
       <% @item.shops.first(8).each do |shop| %>

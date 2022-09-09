@@ -32,35 +32,15 @@
             <p class="bold-drk-text"> Test </p>
             <p class="btn-right-box">></p>
         </a>
-        <a href="INSERT LINK"class="sidebar-btn">
-            <p class="bold-drk-text"> Baby </p>
-            <p class="btn-right-box">></p>
-        </a>
-        <a href="INSERT LINK"class="sidebar-btn">
-            <p class="bold-drk-text"> Bakery </p>
-            <p class="btn-right-box">></p>
-        </a>
-        <a href="INSERT LINK"class="sidebar-btn">
-            <p class="bold-drk-text"> Chilled Food </p>
-            <p class="btn-right-box">></p>
-        </a>
-        <a href="INSERT LINK"class="sidebar-btn">
-            <p class="bold-drk-text"> Drinks </p>
-            <p class="btn-right-box">></p>
-        </a>
-        <a href="INSERT LINK"class="sidebar-btn">
-            <p class="bold-drk-text"> Food cupboard </p>
-            <p class="btn-right-box">></p>
-        </a>
-        <a href="INSERT LINK"class="sidebar-btn">
-            <p class="bold-drk-text"> Fresh food </p>
-            <p class="btn-right-box">></p>
-        </a>
-        <a href="INSERT LINK"class="sidebar-btn">
-            <p class="bold-drk-text"> Frozen food </p>
-            <p class="btn-right-box">></p>
-        </a>
 
+
+    <% categories = Item::CATEGORIES %>
+    <% categories.each do |category| %>
+      <%= link_to items_path(category: category), class: "sidebar-btn" do%>
+         <p class="bold-drk-text"> <%= category.capitalize %></p>
+         <p class="btn-right-box">></p>
+      <% end %>
+    <% end %>
 
 
   </div>

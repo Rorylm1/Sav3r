@@ -4,11 +4,8 @@ class OrderHistoriesController < ApplicationController
     OrderHistory.create(order_history_params)
     @basket = Basket.find(params[:basket_id])
 
-   if  current_page('items','index')
-     current_page
-   else
+
     redirect_to basket_path(@basket)
-   end
   end
 
   private

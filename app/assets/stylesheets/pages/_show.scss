@@ -5,40 +5,38 @@
 }
 
 .show-card {
-  width:200px;
+  width: 100%;
   height: 100%;
-  margin-top: 20px;
+  margin-top: 0;
   text-align: center;
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
-  transition: .6s ease-in-out;
   background: white;
 }
 
 .show-card-shop {
-  width:300px;
+  width: 100%;
   height: 100%;
   margin-top: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
-  transition: .6s ease-in-out;
-  background: white;
 }
 
 .show-image img{
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  height: 200px;
+  height: 250px;
+  width: 100%;
   object-fit: cover;
+}
+.show-card h2 {
+  color: rgb(30, 29, 29);
 }
 
 .show-flex {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%
 }
 
 .shop-info {
@@ -54,13 +52,26 @@
   padding-left: 5px;
 
 }
+.volume {
+  margin-top: 10px;
+}
+.volume p {
+  color: rgb(30, 29, 29);
+  font-size: 18px;
+  display: inline;
+}
+.shop-name {
+  font-weight: bold;
+}
 
 .basket-button {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-
-
+  width: 70%;
+  align-self: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.brand {
+  margin-top: 5%;
 }
 
 .shop-img img{

@@ -28,7 +28,7 @@
       <p><%= shop.name %> <strong>£<%= '%.2f' % shop.price %></strong></p>
       <div class="shop-img">
       <% if Item::BRANDS.key?(shop.name) %>
-      <%= cl_image_tag Item::BRANDS[shop.name], crop: :fill %>
+      <%= image_tag cl_image_path(Item::BRANDS[shop.name], crop: :fill) %>
       <% end %>
       <% end %>
       </div>

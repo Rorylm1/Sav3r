@@ -1,21 +1,20 @@
 
-
 <div class="show-flex">
   <div class="show-card">
       <div class="show-image">
         <img src="<%= @item.image %>" alt="">
       </div>
-
       <div class="brand">
         <h2> <%= @item.name %> </h2>
       </div>
-
       <div class="volume">
         <p>Brand: <%=  @item.brand%></p> <br>
         <p>Quantity: <%= @item.volume %></p>
       </div>
+       <div class="basket-button">
+        <%= link_to "Add to Basket", basket_item_order_histories_path(@basket, @item), class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post} <br> %>
+      </div>
   </div>
-
     <div class="show-card-shop">
     <% @item.shops.first(8).each do |shop| %>
       <div class="shop-info">
@@ -23,7 +22,6 @@
       <div class="shop-name">
       <p><%= shop.name %> <strong>£<%= '%.2f' % shop.price %></strong></p>
       </div>
-
       <div class="shop-img">
       <%# <% if Item::BRANDS.key?(shop.name) %>
       <%# <%= image_tag cl_image_path(Item::BRANDS[shop.name], crop: :fill) %>
@@ -45,16 +43,10 @@
       <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/morrisons_blzsz4.png", crop: :fill %>
        <% when "Ocado" %>
       <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662729912/r3ozdxdbhbf6yx6hsbpb.png", crop: :fill %>
-
       <% end %>
       <% end %>
       </div>
       </div>
-
     <% end %>
     </div>
-
-      <%# <div class="basket-button">
-        <%= link_to "Add to Basket", basket_item_order_histories_path(@basket, @item), class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post} %> <br>
-      <%# </div> %>
     </div>

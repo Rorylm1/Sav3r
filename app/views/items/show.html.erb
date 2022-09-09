@@ -25,7 +25,7 @@
     <% @item.shops.first(8).each do |shop| %>
       <div class="shop-info">
       <% if shop %>
-      <p><%= shop.name %> <strong>£<%= '%.2f' % shop.price %></strong></p>
+      <p><%= shop.name %> <strong>£<%= shop.price %></strong></p>
       <div class="shop-img">
       <%= cl_image_tag Item::BRANDS[shop.name], crop: :fill %>
       <% end %>

@@ -14,6 +14,11 @@
         <p>Brand: <%=  @item.brand%></p> <br>
         <p>Quantity: <%= @item.volume %></p>
       </div>
+
+
+       <%# <div class="basket-button">
+        <%= link_to "Add to Basket", basket_item_order_histories_path(@basket, @item), class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post} <br> %>
+      <%# </div> %>
   </div>
 
     <div class="show-card-shop">
@@ -54,7 +59,4 @@
     <% end %>
     </div>
 
-      <%# <div class="basket-button">
-        <%= link_to "Add to Basket", basket_item_order_histories_path(@basket, @item), class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post} %> <br>
-      <%# </div> %>
     </div>

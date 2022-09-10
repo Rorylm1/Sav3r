@@ -1,48 +1,59 @@
-<div class="sidebar-wrapper "
-  data-sidebar-target="side">
 
+  <div class="sidebar-wrapper" <%= "d-none" if current_page?(root_path(@page))  %>
+    data-sidebar-target="side">
 
-  <div class=sidenav-wrapper>
+  <div style="width: 298px"class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
 
-    <a href="/users/sign_in" class="sidebar-navbar">
-      <span class="sidebar-icon-box">
-      </span>
-        <p class="nav-txt-box">Login/Register</p>
-    </a>
+    <div class=sidenav-wrapper>
 
-    <a href="/users/sign_in" class="sidebar-navbar">
-      <span class="sidebar-icon-box">
-      </span>
-        <p class="nav-txt-box">Need help?</p>
-    </a>
-
-      <div class="sidebar-nav-btn">
-      </div>
-  </div>
-
-  <div class="btn-wrap">
-
-        <%# NEED TO INSERT LINKS %>
-        <a href="INSERT LINK"class="sidebar-btn">
-
-            <p class="bold-drk-text"> SUPER SAV£RS </p>
-            <p class="btn-right-box">></p>
-        </a>
-        <a href="INSERT LINK"class="sidebar-btn">
-            <p class="bold-drk-text"> Test </p>
-            <p class="btn-right-box">></p>
+        <a href="/users/sign_in" class="sidebar-navbar">
+          <span class="sidebar-icon-box">
+          </span>
+            <p class="nav-txt-box">Login/Register</p>
         </a>
 
+        <a href="/users/sign_in" class="sidebar-navbar">
+          <span class="sidebar-icon-box">
+          </span>
+            <p class="nav-txt-box">Need help?</p>
+        </a>
 
-    <% categories = Item::CATEGORIES %>
-    <% categories.each do |category| %>
-      <%= link_to items_path(category: category), class: "sidebar-btn" do%>
-         <p class="bold-drk-text"> <%= category.capitalize %></p>
-         <p class="btn-right-box">></p>
+          <div class="sidebar-nav-btn">
+          </div>
+    </div>
+    <div class="btn-wrap">
+
+          <%# NEED TO INSERT LINKS %>
+           <a href="/items"class="sidebar-btn">
+
+              <p class="bold-drk-text"> Home page </p>
+              <p class="btn-right-box">></p>
+          </a>
+          <a href="INSERT LINK"class="sidebar-btn">
+
+              <p class="bold-drk-text"> SUPER SAV£RS </p>
+              <p class="btn-right-box">></p>
+          </a>
+          <a href="INSERT LINK"class="sidebar-btn">
+              <p class="bold-drk-text"> Previous baskets </p>
+              <p class="btn-right-box">></p>
+          </a>
+
+
+      <% categories = Item::CATEGORIES %>
+      <% categories.each do |category| %>
+        <%= link_to items_path(category: category), class: "sidebar-btn" do%>
+          <p class="bold-drk-text"> <%= category.capitalize %></p>
+          <p class="btn-right-box">></p>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
 
   </div>
 
-</div>
+
+
+
+
+  </div>

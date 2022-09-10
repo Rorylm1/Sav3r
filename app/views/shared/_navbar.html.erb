@@ -1,9 +1,10 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top" <%= "d-none" if current_page?(root_path(@page))  %>>
   <div class="container-fluid">
     <div >
-      <button data-action="click->sidebar#bar" class="navbar-brand">
-      <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662483567/bkkuejbfakl0vcfqycat.png" %>
+      <button data-action="click->sidebar#bar"  class="btn btn-primary navbar-brand" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+        <%= image_tag "https://res.cloudinary.com/dth8lnhas/image/upload/v1662799284/Screenshot_2022-09-10_at_09.41.03_pxfc3h.png" %>
       </button>
+
     </div>
 
      <%= simple_form_for :search, url: items_path, method: :get do |f| %>

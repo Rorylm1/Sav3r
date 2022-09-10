@@ -1,11 +1,8 @@
 // Specific CSS for your home-page
-body {
-  background-image: url('https://res.cloudinary.com/dth8lnhas/image/upload/v1662799284/Screenshot_2022-09-10_at_09.41.03_pxfc3h.png');
-  background-repeat: no-repeat;
+#home-bgr{
   background-size: cover;
-  background-attachment: fixed;
-  text-align: center;
-
+  background-repeat: no-repeat;
+  background-image: url("https://res.cloudinary.com/dth8lnhas/image/upload/v1662816111/Screenshot_2022-09-10_at_14.21.29_kkvfdi.png");
 }
 .logo-font{
   font-family: 'Inspiration', cursive;

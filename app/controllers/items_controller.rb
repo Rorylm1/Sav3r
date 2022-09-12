@@ -35,8 +35,10 @@ class ItemsController < ApplicationController
       end
       @items = Item.last(@count)
 
-    else
+    elsif params[:category].present?
+      @items = Item.where(category: params[:category])
 
+    else
       @items = Item.all
 
     end

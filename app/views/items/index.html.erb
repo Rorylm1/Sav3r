@@ -14,7 +14,7 @@
 
 <form action = "/items">
         <select aria-labelledby="refine-sortlabel" name="sort" data-q="srp-sort">
-          <option value="brand_a_z">Brand: A-Z</option>
+          <option value="brand_a_z", <%= params[:query] %>>Brand: A-Z</option>
           <option value="brand_z_a">Brand: Z-A</option>
           <option value="price_lowest_first">Price: Low to High</option>
         </select>

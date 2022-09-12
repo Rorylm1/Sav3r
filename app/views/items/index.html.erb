@@ -1,29 +1,7 @@
 
 
 
-<%# <script>console.log("hello") %>
-<%# const timer = setTimeout((event) => {
-  const list = document.querySelectorAll(".init-page")
-  list.forEach((element) => {
-  element.classList.add("fade-out");
-})
-}, 1500); %>
-<%# </script> %>
 
-<%# <script> %>
-<%# const timer = setTimeout((event) => { %>
-<%# document.querySelectorAll(".init-page").forEach(el => el.remove()); %>
-<%# }, 3000) %>
-<%# </script> %>
-
-
-
-<%# <div class="init-container init-page">
-  <%# insert image here %>
-  <%# <div class ="init-page init-img"> %>
-  <%# <%= cl_image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662483567/bkkuejbfakl0vcfqycat.png", crop: :fill %>
-  <%# </div> %>
-<%# </div> %>
 <div class="margin"></div>
   <% if params[:query].present?%>
   <h2 id="search-match"><%= @count %> results matching <%= params[:query] %></h2>
@@ -34,20 +12,11 @@
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
       Sort by
     </button>
-      <%# <form action = "/items">
-        <select aria-labelledby="refine-sortlabel" name="sort" data-q="srp-sort">
-          <option value="brand_a_z">Brand: A-Z</option>
-          <option value="brand_z_a">Brand: Z-A</option>
-          <option value="price_lowest_first">Price: Low to High</option>
-          <option value="price_highest_first">Price: High to Low</option>
-        </select>
-        <input type="submit" value="Submit" id="submit">
-      </form> %>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <li><button class="dropdown-item" type="button">Brand: A-Z</button></li>
-      <li><button class="dropdown-item" type="button">Brand: Z-A</button></li>
-      <li><button class="dropdown-item" type="button">Price: Cheapest first</button></li>
-    </ul>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li><button class="dropdown-item" type="button">Brand: A-Z</button></li>
+        <li><button class="dropdown-item" type="button">Brand: Z-A</button></li>
+        <li><button class="dropdown-item" type="button">Price: Cheapest first</button></li>
+      </ul>
 </div>
 
 <div class="wrapper">

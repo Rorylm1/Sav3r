@@ -45,6 +45,7 @@ class ItemsController < ApplicationController
 
     end
 
+
     if params[:sort] == "brand_a_z"
       @items = Item.order(:brand)
     elsif params[:sort] == "brand_z_a"
@@ -53,48 +54,7 @@ class ItemsController < ApplicationController
       @items = Item.order(:price)
     end
 
-
-
-
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   def show

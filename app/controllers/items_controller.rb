@@ -95,6 +95,7 @@ class ItemsController < ApplicationController
     #   @basket.save
 
     # end
+    @order_history = OrderHistory.new
 
 
     @item = Item.find(params[:id])

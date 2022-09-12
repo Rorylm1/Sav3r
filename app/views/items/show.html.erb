@@ -18,9 +18,21 @@
       </div>
 
 
+</div>
        <div class="basket-button">
         <% if user_signed_in? %>
-        <%= link_to "Add to Basket", basket_item_order_histories_path(@basket, @item), class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post}  %>
+        <%# <div data-controller="add-quantity"> %>
+        <%# <form>
+        <p>Select Quantity <input type= "number" name="sort_location" id="number-box"></p>
+        </form> %>
+        <%# <%= link_to "Add to Basket", basket_item_order_histories_path(@basket, @item), class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post}  %>
+        <%= form_with url: "/baskets/#{@basket.id}/items/#{@item.id}/order_histories", method: :post do |f|  %>
+        <%= f.number_field :quantity %>
+        <%= f.submit "Add to Basket"%>
+        <% end %>
+
+        <% else %>
+        <%# <%= link_to "Add to Basket", new_user_registration_path, class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post}  %>
           <% end %> <br>
       </div>
 

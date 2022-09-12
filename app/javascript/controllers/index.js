@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import AddQuantityController from "./add_quantity_controller"
+application.register("add-quantity", AddQuantityController)
+
+import CartController from "./cart_controller"
+application.register("cart", CartController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

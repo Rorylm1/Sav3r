@@ -1,7 +1,8 @@
 class OrderHistoriesController < ApplicationController
 
   def create
-    OrderHistory.create(order_history_params)
+    order = OrderHistory.create(order_history_params)
+
     @basket = Basket.find(params[:basket_id])
 
 
@@ -11,6 +12,6 @@ class OrderHistoriesController < ApplicationController
   private
 
   def order_history_params
-    params.permit(:basket_id, :item_id)
+    params.permit(:basket_id, :item_id, :quantity)
   end
 end

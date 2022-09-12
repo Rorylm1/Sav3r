@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
 
 
     else
-      @items = Item.all
+      @items = Item.where("category = 'bargains'")
 
     end
 

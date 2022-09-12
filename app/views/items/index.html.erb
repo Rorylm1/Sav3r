@@ -7,6 +7,8 @@
     <h2 id="search-match"><%= @count %> results matching <%= params[:query] %></h2>
   <% elsif params[:category].present? %>
     <h2 id="search-match"><%=  %> Categories > <%= params[:category].capitalize %></h2>
+  <% else %>
+    <h2> Today's Best Bargains</h2>
   <% end %>
 <div class="margin"></div>
 

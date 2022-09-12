@@ -35,10 +35,23 @@ class ItemsController < ApplicationController
       end
       @items = Item.last(@count)
 
-    else
+    elsif params[:category].present?
+      @items = Item.where(category: params[:category])
 
+
+
+    else
       @items = Item.all
 
+    end
+
+
+    if params[:sort] == "brand_a_z"
+      @items = Item.order(:brand)
+    elsif params[:sort] == "brand_z_a"
+      @items = Item.order(:brand).reverse
+    elsif params[:sort] == "price_lowest_first"
+      @items = Item.order(:price)
     end
 
   end
@@ -62,7 +75,7 @@ class ItemsController < ApplicationController
 
     @item.shops.destroy_all
 
-    @link_name = @item.name.gsub(" ", "-").gsub("&", "-").gsub("+", "-").gsub("'", "").gsub("%", "").downcase
+    @link_name = @item.name.gsub(" ", "-").gsub("&", "-").gsub("+", "-").gsub("'", "").gsub("%", "").gsub("(", "").gsub(")", "").downcase
 
 
     @url = "https://www.trolley.co.uk/product/#{@link_name}/#{@item.link}"

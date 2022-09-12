@@ -4,9 +4,10 @@
 <p>total price  </p>
   <% @items.each do |order| %>
   <br>
-    <li> <%= order.item.name %></li>
+    <li> <%= order.item.name %> x<%= order.quantity %></li>
     <li> <%= order.item.brand %></li>
-    <li> <%= order.quantity %> </li>
+    <li> <img src="<%= order.item.image %>" alt=""></li>
+
     <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Shops

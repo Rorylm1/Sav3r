@@ -1,4 +1,5 @@
 <% invalid = @basket.items.count == 0 || current_page?(basket_path(@basket)) || current_page?(root_path(@page)) %>
+<% if user_signed_in? %>
  <%= link_to basket_path(@basket) do %>
 
   <div class="cart-wrapper <%= "d-none" if invalid %>"
@@ -23,4 +24,4 @@
 
   </div>
    <% end %>
-
+   <% end %>

@@ -12,10 +12,10 @@ Item.destroy_all
 puts "destroyed items"
 puts "scraping bargains"
 
-url = "https://www.trolley.co.uk/"
-html_file = URI.open(url).read
-html_doc = Nokogiri::HTML(html_file)
-search_results = html_doc.search(".product-item")
+# url = "https://www.trolley.co.uk/"
+# html_file = URI.open(url).read
+# html_doc = Nokogiri::HTML(html_file)
+# search_results = html_doc.search(".product-item")
 
 
 puts "scraping categories..."

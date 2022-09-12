@@ -15,4 +15,13 @@ class ApplicationController < ActionController::Base
       session[:basket_id] = @basket.id
     end
   end
+
+  def after_sign_in_path_for(resource)
+    "/items"
+  end
+
+  def after_sign_up_path_for(resource)
+    "/items"
+  end
+
 end

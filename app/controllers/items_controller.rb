@@ -44,14 +44,14 @@ class ItemsController < ApplicationController
       @items = Item.all
 
     end
+      if params[:sort] == "brand_a_z"
+        @items = Item.order(:brand)
+      elsif params[:sort] == "brand_z_a"
+        @items = Item.order(:brand).reverse
+      elsif params[:sort] == "price_lowest_first"
+        @items = Item.order(:price)
+      end
 
-    if params[:sort] == "brand_a_z"
-      @items = Item.order(:brand)
-    elsif params[:sort] == "brand_z_a"
-      @items = Item.order(:brand).reverse
-    elsif params[:sort] == "price_lowest_first"
-      @items = Item.order(:price)
-    end
 
 
 

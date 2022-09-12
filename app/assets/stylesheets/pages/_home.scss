@@ -1,7 +1,11 @@
 // Specific CSS for your home-page
 #home-bgr{
-  background-size: cover;
+  background-size: 100%;
+  width: 100vw;
+  height: 100vh;
   background-repeat: no-repeat;
+  object-fit: contain;
+  position: relative;
   background-image: url("https://res.cloudinary.com/dth8lnhas/image/upload/v1662816111/Screenshot_2022-09-10_at_14.21.29_kkvfdi.png");
 }
 #btn-white-lrg{
@@ -13,7 +17,14 @@
   margin-top: 30px;
 
 }
-.btn-cover{
-  margin-top: 117%;
-  margin-left: 45px;
+
+#home-body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.btn-cover {
+  position: absolute;
+  bottom: 20%;
+  left: 13%;
 }

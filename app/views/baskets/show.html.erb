@@ -2,15 +2,39 @@
 <ul>
 <p>total items <%= @items.count %> </p>
 <p>total price  </p>
-  <% @items.each do |item| %>
+  <% @items.each do |order| %>
   <br>
-    <li> <%= item.brand %></li>
-    <li> <%= item.name %></li>
-    <li> # items.count(params[:id]) </li>
-    <% item.shops.each do |shop| %>
-    <li> <%= shop.name %> <%= shop.price %></li>
+    <li> <%= order.item.name %></li>
+    <li> <%= order.item.brand %></li>
+    <li> <%= order.quantity %> </li>
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Shops
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <% order.item.shops.each do |shop| %>
 
+    <div class="dropdown-item" ><%= shop.name %>
+    <% if order.quantity? %>
+    <%= shop.price * order.quantity %>
+    <% else %>
+    <%= shop.price %>
     <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
     <br>
   <% end %>
 </ul>
+
+<button type="button" class="btn btn-success">Calculate Best Shop</button>
+<%# <%
+item_totals = {}
+@items.each do |item|
+item.shops.each do |shop|
+item_totals[shop.name] = item_totals[shop.name] += shop.price
+end
+end
+ %>
+ <%# <%= p ITEM_TOTALS %>

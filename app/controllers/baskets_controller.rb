@@ -3,11 +3,12 @@ class BasketsController < ApplicationController
     @basket = Basket.find(params[:id])
     @items = @basket.order_histories
 
-    # @items.each do |item|
-    #   if item.present? # && item.name === item.name
-    #     item.price += item.price
-    #    end
-
 
   end
+
+    # def destroy
+    #   @item = Item.find(params[:id])
+    #   @item.destroy
+    #   redirect_to items_path, notice: 'Post was successfully destroyed.', status: :see_other
+    # end
 end

@@ -1,34 +1,14 @@
 
 
 
-<%# <script>console.log("hello") %>
-<%# const timer = setTimeout((event) => {
-  const list = document.querySelectorAll(".init-page")
-  list.forEach((element) => {
-  element.classList.add("fade-out");
-})
-}, 1500); %>
-<%# </script> %>
 
-<%# <script> %>
-<%# const timer = setTimeout((event) => { %>
-<%# document.querySelectorAll(".init-page").forEach(el => el.remove()); %>
-<%# }, 3000) %>
-<%# </script> %>
-
-
-
-<%# <div class="init-container init-page">
-  <%# insert image here %>
-  <%# <div class ="init-page init-img"> %>
-  <%# <%= cl_image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662483567/bkkuejbfakl0vcfqycat.png", crop: :fill %>
-  <%# </div> %>
-<%# </div> %>
 <div class="margin"></div>
   <% if params[:query].present?%>
     <h2 id="search-match"><%= @count %> results matching <%= params[:query] %></h2>
   <% elsif params[:category].present? %>
     <h2 id="search-match"><%=  %> Categories > <%= params[:category].capitalize %></h2>
+  <% else %>
+    <h2> Today's Best Bargains</h2>
   <% end %>
 <div class="margin"></div>
 
@@ -36,12 +16,7 @@
     <button name="sort" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
       Sort by
     </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <li><button value="brand_a_z" class="dropdown-item" type="button">Brand: A-Z</button></li>
-      <li><button value="brand_z_a" class="dropdown-item" type="button">Brand: Z-A</button></li>
-      <li><button value="price_lowest_first" class="dropdown-item" type="button">Price: Cheapest first</button></li>
-    </ul>
-</form>
+
 
 <form action = "/items">
         <select aria-labelledby="refine-sortlabel" name="sort" data-q="srp-sort">

@@ -4,9 +4,10 @@
 <p>total price  </p>
   <% @items.each do |order| %>
   <br>
-    <li> <%= order.item.name %></li>
+    <li> <%= order.item.name %> x<%= order.quantity %></li>
     <li> <%= order.item.brand %></li>
-    <li> <%= order.quantity %> </li>
+    <li> <img src="<%= order.item.image %>" alt=""></li>
+
     <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Shops
@@ -16,9 +17,9 @@
 
     <div class="dropdown-item" ><%= shop.name %>
     <% if order.quantity? %>
-    <%= shop.price * order.quantity %>
+    <p>£ <%= '%.2f' % (shop.price * order.quantity).round(2) %></p>
     <% else %>
-    <%= shop.price %>
+    <p>£ <%= '%.2f' % shop.price %></p>
     <% end %>
     </div>
     <% end %>
@@ -28,13 +29,70 @@
   <% end %>
 </ul>
 
-<button type="button" class="btn btn-success">Calculate Best Shop</button>
-<%# <%
+
+<%
 item_totals = {}
-@items.each do |item|
-item.shops.each do |shop|
-item_totals[shop.name] = item_totals[shop.name] += shop.price
+@items.each do |order|
+order.item.shops.each do |shop|
+item_totals[shop.name] = 0
+end
+end
+
+
+@items.each do |order|
+order.item.shops.each do |shop|
+item_totals[shop.name] += (shop.price * order.quantity)
 end
 end
  %>
- <%# <%= p ITEM_TOTALS %>
+
+
+
+<% all_shop_names = [] %>
+
+<% @items.each do |order| %>
+<% order.item.shops.each do |shop|%>
+<% all_shop_names.push shop.name %>
+<% end %>
+<% end %>
+
+
+<% shop_count = {} %>
+
+<% @items.each do |order| %>
+<% order.item.shops.each do |shop|%>
+<% shop_count[shop.name] = all_shop_names.count(shop.name) %>
+<% end %>
+<% end %>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Finalise Basket
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Cheapest Shops given your basket </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <% all_shop_names.uniq.each do |shop| %>
+      <% if shop_count[shop] / @items.size >= 0.75 %>
+      <%= shop %>
+      <p>£ <%= '%.2f' % item_totals[shop] %></p>
+      <% end %>
+      <% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

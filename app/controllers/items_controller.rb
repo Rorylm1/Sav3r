@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
 
 
     else
-      @items = Item.all
+      @items = Item.where("category = 'bargains'")
 
     end
       if params[:sort] == "brand_a_z"
@@ -55,47 +55,7 @@ class ItemsController < ApplicationController
 
 
 
-
-
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   def show
@@ -116,7 +76,7 @@ class ItemsController < ApplicationController
 
     @item.shops.destroy_all
 
-    @link_name = @item.name.gsub(" ", "-").gsub("&", "-").gsub("+", "-").gsub("'", "").gsub("%", "").downcase
+    @link_name = @item.name.gsub(" ", "-").gsub("&", "-").gsub("+", "-").gsub("'", "").gsub("%", "").gsub("(", "").gsub(")", "").downcase
 
 
     @url = "https://www.trolley.co.uk/product/#{@link_name}/#{@item.link}"

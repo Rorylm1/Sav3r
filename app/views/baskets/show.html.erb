@@ -29,43 +29,51 @@
   <% end %>
 </ul>
 
-
-<%
-item_totals = {}
-@items.each do |order|
-order.item.shops.each do |shop|
-item_totals[shop.name] = 0
-end
-end
-
-
-@items.each do |order|
-order.item.shops.each do |shop|
-item_totals[shop.name] += (shop.price * order.quantity)
-end
-end
- %>
-
-
-
-<% all_shop_names = [] %>
-
-<% @items.each do |order| %>
-<% order.item.shops.each do |shop|%>
-<% all_shop_names.push shop.name %>
-<% end %>
+<% total_price = 0 %>
+<% @items.each do |item|%>
+<%= total_price += item.item.price * item.quantity%>
+<% Basket.where(id: params[:id]).update(total_price: total_price) %>
 <% end %>
 
 
-<% shop_count = {} %>
+<%# ignore these lines they're just the calculation lines %>
 
-<% @items.each do |order| %>
-<% order.item.shops.each do |shop|%>
-<% shop_count[shop.name] = all_shop_names.count(shop.name) %>
-<% end %>
-<% end %>
+  <%
+    item_totals = {}
+    @items.each do |order|
+    order.item.shops.each do |shop|
+    item_totals[shop.name] = 0
+    end
+    end
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+
+  @items.each do |order|
+  order.item.shops.each do |shop|
+  item_totals[shop.name] += (shop.price * order.quantity)
+  end
+  end
+  %>
+
+
+
+  <% all_shop_names = [] %>
+
+  <% @items.each do |order| %>
+  <% order.item.shops.each do |shop|%>
+  <% all_shop_names.push shop.name %>
+  <% end %>
+  <% end %>
+
+
+  <% shop_count = {} %>
+
+  <% @items.each do |order| %>
+  <% order.item.shops.each do |shop|%>
+  <% shop_count[shop.name] = all_shop_names.count(shop.name) %>
+  <% end %>
+  <% end %>
+
+<button type="button" class="btn btn-primary finalise-button" data-toggle="modal" data-target="#exampleModal">
   Finalise Basket
 </button>
 

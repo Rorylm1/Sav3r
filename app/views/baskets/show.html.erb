@@ -47,7 +47,30 @@
       <% selected_shop = name %>
     <% end %>
   <% end %>
+
+  <%# title with specific shop img %>
+
   <h2> <%= selected_shop %> </h2>
+  <% case selected_shop %>
+          <% when "Poundland" %>
+          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/poundland_qppk9u.png", crop: :fill %>
+          <% when "Sainsbury's" %>
+          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/sainsbury_s_en8ssv.png", crop: :fill %>
+          <% when "Tesco" %>
+          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/tesco_w6rgal.png", crop: :fill %>
+          <% when "ALDI" %>
+          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/aldi_xcjrv8.png", crop: :fill %>
+          <% when "Asda" %>
+          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/asda_v6kw5g.png", crop: :fill %>
+          <% when "Co-op" %>
+          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662655318/co-op_wjaopn.png", crop: :fill %>
+          <% when "Morrisons" %>
+          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/morrisons_blzsz4.png", crop: :fill %>
+          <% when "Ocado" %>
+          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662729912/r3ozdxdbhbf6yx6hsbpb.png", crop: :fill %>
+
+    <% end %>
+
   <% @items.each do |order| %>
   <% shopname_arr = [] %>
   <% order.item.shops.each do |shop| %>

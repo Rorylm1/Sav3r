@@ -26,12 +26,19 @@
   </div>
 </div>
     <br>
+    <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
+      <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
+      <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
+    <% end %>
+
+  <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
   <% end %>
+
 </ul>
 
 <% total_price = 0 %>
 <% @items.each do |item|%>
-<%= total_price += item.item.price * item.quantity%>
+<% total_price += item.item.price * item.quantity%>
 <% Basket.where(id: params[:id]).update(total_price: total_price) %>
 <% end %>
 
@@ -77,6 +84,8 @@
   Finalise Basket
 </button>
 
+<%= link_to 'Clear Basket', basket_path(@basket) , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -89,7 +98,7 @@
       </div>
       <div class="modal-body">
 
-      <% all_shop_names.uniq.each do |shop| %>
+      <% all_shop_names.uniq.sort.each do |shop| %>
       <% if shop_count[shop] / @items.size >= 0.75 %>
       <%= shop %>
       <p>£ <%= '%.2f' % item_totals[shop] %></p>

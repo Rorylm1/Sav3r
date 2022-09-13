@@ -1,4 +1,4 @@
-const add_to = document.getElementsByClassName('basket')[0]
+const add_to = document.getElementById('basket')
 
 // console.log(add_to)
 

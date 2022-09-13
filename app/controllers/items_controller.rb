@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   require "open-uri"
 
   def index
+
     if params[:query].present?
       @url = "https://www.trolley.co.uk/search/?from=search&q=#{params[:query]}"
       @html_file = URI.open(@url).read
@@ -37,7 +38,14 @@ class ItemsController < ApplicationController
 
     elsif params[:category].present?
       @items = Item.where(category: params[:category])
-
+      # raise
+      if params[:sort] == "brand_a_z"
+        @items = Item.order(:brand).and(Item.where(category: params[:category]))
+      elsif params[:sort] == "brand_z_a"
+        @items = Item.order(:brand).and(Item.where(category: params[:category])).reverse
+      elsif params[:sort] == "price_lowest_first"
+        @items = Item.order(:price).and(Item.where(category: params[:category]))
+      end
 
 
     else
@@ -46,13 +54,13 @@ class ItemsController < ApplicationController
     end
 
 
-      if params[:sort] == "brand_a_z"
-        @items = Item.order(:brand)
-      elsif params[:sort] == "brand_z_a"
-        @items = Item.order(:brand).reverse
-      elsif params[:sort] == "price_lowest_first"
-        @items = Item.order(:price)
-      end
+      # if params[:sort] == "brand_a_z"
+      #   @items = Item.order(:brand)
+      # elsif params[:sort] == "brand_z_a"
+      #   @items = Item.order(:brand).reverse
+      # elsif params[:sort] == "price_lowest_first"
+      #   @items = Item.order(:price)
+      # end
 
 
   end

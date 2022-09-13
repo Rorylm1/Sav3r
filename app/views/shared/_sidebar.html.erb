@@ -43,7 +43,7 @@
       <% categories = Item::CATEGORIES %>
       <% categories.each do |category| %>
         <%= link_to items_path(category: category), class: "sidebar-btn" do%>
-          <p class="bold-drk-text"> <%= category.capitalize %></p>
+          <p style="font-weight:normal"class="bold-drk-text"> <%= category.capitalize %></p>
           <p class="btn-right-box">></p>
         <% end %>
       <% end %>

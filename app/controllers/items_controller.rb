@@ -47,6 +47,17 @@ class ItemsController < ApplicationController
         @items = Item.order(:price).and(Item.where(category: params[:category]))
       end
 
+    elsif params[:query].present?
+      @items = Item.where(query: params[:query])
+      raise
+      if params[:sort] == "brand_a_z"
+        @items = Item.order(:brand).and(Item.where(query: params[:query]))
+      elsif params[:sort] == "brand_z_a"
+        @items = Item.order(:brand).and(Item.where(query: params[:query])).reverse
+      elsif params[:sort] == "price_lowest_first"
+        @items = Item.order(:price).and(Item.where(query: params[:query]))
+      end
+
 
     else
       @items = Item.where("category = 'bargains'")
@@ -64,6 +75,7 @@ class ItemsController < ApplicationController
 
 
   end
+end
 
 
   def show
@@ -105,5 +117,5 @@ class ItemsController < ApplicationController
 
 
 
-  end
+
 end

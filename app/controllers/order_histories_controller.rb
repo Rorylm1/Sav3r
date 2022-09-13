@@ -6,7 +6,7 @@ class OrderHistoriesController < ApplicationController
     @basket = Basket.find(params[:basket_id])
 
 
-    redirect_to basket_path(@basket)
+    # redirect_to basket_path(@basket)
   end
 
   private

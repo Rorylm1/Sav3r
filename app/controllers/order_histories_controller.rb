@@ -7,10 +7,12 @@ class OrderHistoriesController < ApplicationController
   end
 
 
+
   def destroy
     @order_history = OrderHistory.find(params[:id])
     @order_history.destroy
     redirect_to basket_path, notice: 'Item was successfully removed', status: :see_other
+
   end
 
   def update

@@ -1,5 +1,4 @@
 
-
 <div>
   <p>Categories > <%= @item.category %> </p>
 </div>
@@ -32,12 +31,13 @@
         <%# <%= link_to "Add to Basket", basket_item_order_histories_path(@basket, @item), class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post}  %>
         <%= form_with url: "/baskets/#{@basket.id}/items/#{@item.id}/order_histories", method: :post do |f|  %>
 
+
         <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Insert quantity" %>
-        <%= f.submit "Add to Basket", class: 'btn btn-success text-white category-button', style: ' background-color: #06D6A0; width: 100% '%>
+        <%= f.submit "Add to Basket", id: "basket", class: 'btn btn-success text-white category-button basket', style: ' background-color: #06D6A0; width: 100% '%>
         <% end %>
 
         <% else %>
-        <%= link_to "Add to Basket", new_user_session_path, class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post} %>
+        <%= link_to "Add to Basket", "/users/sign_up", class: 'btn btn-success text-white category-button add-to-basket', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post} %>
           <% end %> <br>
       </div>
 

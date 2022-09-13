@@ -48,9 +48,10 @@
 
   border-color: $red;
 
-  border-top: solid;
-  padding-right: 5px;
+  border-top: groove;
+  padding-right: 10%;
   padding-left: 5px;
+  color: black;
 
 }
 .volume {
@@ -63,10 +64,12 @@
 }
 .shop-name {
   font-weight: bold;
+  padding-left: 10%;
+
 }
 
 .basket-button {
-  width: 70%;
+  width: 80%;
   align-self: center;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -83,4 +86,5 @@
 }
 .changed {
   background-color: aqua;
+  margin-bottom: 50px;
 }

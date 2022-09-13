@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :items
-  resources :baskets, only: [:show] do
+  resources :baskets, only: [:show, :destroy] do
     resources :items, only: [:index] do
-        resources :order_histories, only: [:create]
+        resources :order_histories, only: [:create, :destroy, :update]
     end
   end
 

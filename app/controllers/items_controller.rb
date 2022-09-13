@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   require "open-uri"
 
   def index
+
     if params[:query].present?
       @url = "https://www.trolley.co.uk/search/?from=search&q=#{params[:query]}"
       @html_file = URI.open(@url).read
@@ -33,26 +34,43 @@ class ItemsController < ApplicationController
 
         @count += 1
       end
-      @items = Item.last(@count)
+      # @items = Item.first(@count)
+    end
 
-    elsif params[:category].present?
+    if params[:category].present?
       @items = Item.where(category: params[:category])
+      if params[:sort] == "brand_a_z"
+        @items = Item.order(:brand).and(Item.where(category: params[:category]))
+      elsif params[:sort] == "brand_z_a"
+        @items = Item.order(:brand).and(Item.where(category: params[:category])).reverse
+      elsif params[:sort] == "price_lowest_first"
+        @items = Item.order(:price).and(Item.where(category: params[:category]))
+      end
 
+    elsif params[:query].present?
+      @items = Item.where(" ILIKE ?", "%#{params[:query]}%")
+      if params[:sort] == "brand_a_z"
+        @items = Item.order(:brand).and(Item.where("name ILIKE ?", "%#{params[:query]}%"))
+      elsif params[:sort] == "brand_z_a"
+        @items = Item.order(:brand).and(Item.where("name ILIKE ?", "%#{params[:query]}%")).reverse
+      elsif params[:sort] == "price_lowest_first"
+        @items = Item.order(:price).and(Item.where("name ILIKE ?", "%#{params[:query]}%"))
+      end
 
 
     else
       @items = Item.where("category = 'bargains'")
 
     end
-      if params[:sort] == "brand_a_z"
-        @items = Item.order(:brand)
-      elsif params[:sort] == "brand_z_a"
-        @items = Item.order(:brand).reverse
-      elsif params[:sort] == "price_lowest_first"
-        @items = Item.order(:price)
-      end
 
 
+      # if params[:sort] == "brand_a_z"
+      #   @items = Item.order(:brand)
+      # elsif params[:sort] == "brand_z_a"
+      #   @items = Item.order(:brand).reverse
+      # elsif params[:sort] == "price_lowest_first"
+      #   @items = Item.order(:price)
+      # end
 
 
   end

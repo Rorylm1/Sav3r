@@ -1,5 +1,5 @@
 <% invalid = @basket.items.count == 0 || current_page?(basket_path(@basket)) || current_page?(root_path(@page)) %>
-<% if user_signed_in? %>
+<% if user_signed_in? && invalid == false %>
  <%= link_to basket_path(@basket) do %>
 
   <div class="cart-wrapper sticky-bottom<%= "d-none" if invalid %>"
@@ -17,7 +17,9 @@
 
     <div class="footer-side">
       <div class="text-red-bold">
-        <p><strong>£ <%= '%.2f' % Basket.where(user_id: current_user)[0].total_price %></strong></p>
+
+        <p><strong>£ <%= '%.2f' % Basket.where(user_id: current_user).last.total_price %></strong></p>
+
       </div>
     </div>
 

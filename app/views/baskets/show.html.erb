@@ -69,6 +69,12 @@
     <% end %>
   <% end %>
   <% end %>
+  <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
+      <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
+      <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
+    <% end %>
+
+  <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
 
   <% end %>
   <br>
@@ -132,11 +138,8 @@
   Finalise Basket
 </button>
 <% end %>
-<% total_price = 0 %>
-<% @items.each do |item|%>
-<% total_price += item.item.price * item.quantity%>
-<% Basket.where(id: params[:id]).update(total_price: total_price) %>
-<% end %>
+
+
 
 
 
@@ -172,3 +175,9 @@
     </div>
   </div>
 </div>
+
+<% total_price = 0 %>
+  <% @items.each do |item|%>
+  <% total_price += item.item.price * item.quantity%>
+  <% Basket.where(id: params[:id]).update(total_price: total_price) %>
+  <% end %>

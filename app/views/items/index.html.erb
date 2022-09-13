@@ -8,16 +8,18 @@
   <% elsif params[:category].present? %>
     <h2 id="search-match"><%=  %> Categories > <%= params[:category].capitalize %></h2>
   <% else %>
-    <h2> Today's Best Bargains</h2>
+    <h2 id="search-match"> Today's Best Bargains</h2>
   <% end %>
 <div class="margin"></div>
 
-<form action = "/items">
+<form class = "filter" action = "/items">
         <select aria-labelledby="refine-sortlabel" name="sort" data-q="srp-sort">
           <option value="brand_a_z", <%= params[:query] %>>Brand: A-Z</option>
           <option value="brand_z_a">Brand: Z-A</option>
           <option value="price_lowest_first">Price: Low to High</option>
         </select>
+         <input type="hidden" id="custId" name="category" value="<%=params[:category]%>">
+          <input type="hidden" id="custId" name="query" value="<%=params[:query]%>">
         <input type="submit" value="Submit" id="submit">
       </form>
 

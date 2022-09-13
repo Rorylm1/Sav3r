@@ -3,7 +3,6 @@ class BasketsController < ApplicationController
     @basket = Basket.find(params[:id])
     @items = @basket.order_histories
 
-
   end
 
     def destroy

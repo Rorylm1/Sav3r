@@ -3,7 +3,8 @@ class Item < ApplicationRecord
   has_many :order_histories
   has_many :baskets, through: :order_histories
 
-  CATEGORIES = ['baby-toddler-kids', 'bakery', 'chilled-food', 'drinks', 'food-cupboard', 'fresh-food', 'frozen-food'].sort
+  CATEGORIES = ['baby-toddler-kids', 'bakery', 'beauty-cosmetics', 'chilled-food', 'drinks', 'food-cupboard',
+                'pets', 'household', 'home-garden', 'health-toiletries', 'fresh-food', 'frozen-food'].sort
 
   BRANDS = {}
 

@@ -35,8 +35,9 @@
   <% end %>
   <% end %>
 <%# calculation ends %>
-<h1>Shopping list</h1>
+
 <ul>
+
 
 <%# This is whether you have finalised your basket or not %>
 <% if params[:shop].present? %>
@@ -50,26 +51,7 @@
 
   <%# title with specific shop img %>
 
-  <h2> <%= selected_shop %> </h2>
-  <% case selected_shop %>
-          <% when "Poundland" %>
-          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/poundland_qppk9u.png", crop: :fill %>
-          <% when "Sainsbury's" %>
-          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/sainsbury_s_en8ssv.png", crop: :fill %>
-          <% when "Tesco" %>
-          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/tesco_w6rgal.png", crop: :fill %>
-          <% when "ALDI" %>
-          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/aldi_xcjrv8.png", crop: :fill %>
-          <% when "Asda" %>
-          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/asda_v6kw5g.png", crop: :fill %>
-          <% when "Co-op" %>
-          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662655318/co-op_wjaopn.png", crop: :fill %>
-          <% when "Morrisons" %>
-          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/morrisons_blzsz4.png", crop: :fill %>
-          <% when "Ocado" %>
-          <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662729912/r3ozdxdbhbf6yx6hsbpb.png", crop: :fill %>
-
-    <% end %>
+  <h2> <%= selected_shop %> shopping list</h2>
 
   <% @items.each do |order| %>
   <% shopname_arr = [] %>
@@ -77,31 +59,37 @@
   <% shopname_arr.push shop.name %>
   <% end %>
 
-  <% if shopname_arr.include?(selected_shop) %>
-  <br>
-    <li> <%= order.item.name %> x<%= order.quantity %></li>
-    <li> <%= order.item.brand %></li>
-    <li> <img src="<%= order.item.image %>" alt=""></li>
-  <% order.item.shops.each do |shop| %>
-  <% if shop.name == selected_shop %>
-  <h4><%= shop.name %></h4>
-  <% if order.quantity? %>
-    <p>£ <%= '%.2f' % (shop.price * order.quantity).round(2) %></p>
-    <% else %>
-    <p>£ <%= '%.2f' % shop.price %></p>
-    <% end %>
-  <% end %>
-  <% end %>
-  <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
-      <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
-      <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
-    <% end %>
 
-  <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
 
-  <% end %>
-  <br>
+  <div class="cards">
+        <% if shopname_arr.include?(selected_shop) %>
+        <br>
+        <div class="flex" style="width:100%">
+          <div class="image"> <img src="<%= order.item.image %>" alt=""></div>
+            <div class="align-left">
+              <p><%= order.item.brand %></p>
+              <p><%= order.item.name %> x<%= order.quantity %></p>
+               <% order.item.shops.each do |shop| %>
+                <% if shop.name == selected_shop %>
+                <%# <h4><%= shop.name %>
+                  <p><strong>£<%= '%.2f' % (shop.price * order.quantity).round(2) %></strong></p>
+                <% end %>
+                <% end %>
+            </div>
+        </div>
 
+        <div class="flex">
+          <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
+          <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
+              <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
+              <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
+            <% end %>
+
+
+          <% end %>
+          <br>
+        </div>
+  </div>
 
   <% end %>
   <%# Items that weren't included by your shop %>

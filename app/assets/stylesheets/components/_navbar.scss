@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #EF476F;
+  background: lightgray;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -30,11 +30,11 @@
   transition: .3s ease-in-out;
 }
 #search-button:hover {
-  background-color: #EF476F;
+  background-color: gray;
   border: none;
 }
 .navbar-brand {
-  background-color: #EF476F;
+  background-color: lightgray;
   border: none;
 }
 .navbar-toggler {

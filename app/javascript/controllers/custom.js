@@ -1,5 +1,6 @@
-const add_to = document.getElementById('basket')
+const add_to = document.getElementsByClassName('basket')[0]
 
+// console.log(add_to)
 
 
 add_to.addEventListener('click', event => {

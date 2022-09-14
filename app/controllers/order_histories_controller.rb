@@ -15,9 +15,25 @@ class OrderHistoriesController < ApplicationController
   end
 
   def update
+    if params[:change].present?
+      @order_history = OrderHistory.find(params[:id])
+      if params[:change] == 'minus'
+      @order_history.quantity = @order_history.quantity - 1
+      @order_history.save
+      elsif params[:change] == 'add'
+      @order_history.quantity = @order_history.quantity + 1
+      @order_history.save
+      end
+      @basket = Basket.find(@order_history.basket_id)
+      redirect_to basket_path(@basket)
+
+    else
+
     @order_history = OrderHistory.find(params[:id])
     @order_history.update(order_history_params)
-    redirect_to basket_path
+    @basket = Basket.find(@order_history.basket_id)
+      redirect_to basket_path(@basket)
+    end
   end
 
 

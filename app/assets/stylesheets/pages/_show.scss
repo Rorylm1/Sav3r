@@ -86,6 +86,17 @@
   background-color: aqua;
   margin-bottom: 50px;
 }
+
+.yellow-border{
+  border: solid;
+  border-color: $yellow;
+  border-width: 3px;
+  color: black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 90%;
+  margin-left: 5%;
+
 .view-basket {
   margin-top: 5px;
   width: 100%;
@@ -103,4 +114,5 @@
 }
 #categ-div {
   margin-top: 10px;
+
 }

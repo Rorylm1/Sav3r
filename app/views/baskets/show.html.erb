@@ -127,7 +127,7 @@
         <div class="image"><img src="<%= order.item.image %>" alt=""></li>
         </div>
         <div style="padding-left: 20px" class="name-and-price">
-          <li> <%= order.item.brand %> <%= order.item.name %> x<%= order.quantity %></li>
+          <p><%= order.item.brand %> <%= order.item.name %> x<%= order.quantity %></p>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Shops
@@ -143,16 +143,21 @@
                     <% end %>
                   </div>
                 <% end %>
+                    <div class="flex yellow-border">
+                      <div style="margin-left: 7%; width: 40px"><strong>-</strong></div>
+                      <div><%= order.quantity %> added</div>
+                      <div style="margin-right: 7%; width: 40px"><strong>+</strong></div>
+                    </div>
               </div>
           </div>
         </div>
     </div>
-            <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
-              <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
-              <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
-            <% end %>
+            <%# <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
+              <%# <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
+              <%# <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
+            <%# <% end %>
 
-          <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
+          <%# <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
           <% end %>
   </div>
 </div>

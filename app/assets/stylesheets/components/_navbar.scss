@@ -45,6 +45,10 @@
   background-color: $red;
   border: none;
 }
+.navbar-brand:focus {
+  background-color: $red;
+  border: none;
+}
 
 .navbar-toggler {
   border: none;

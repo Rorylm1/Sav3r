@@ -7,11 +7,13 @@
     <div class=sidenav-wrapper>
         <%# logout needs to be fixed %>
         <% if user_signed_in? %>
-        <a href= "/users/sign_out" class="sidebar-navbar">
-          <span class="sidebar-icon-box fa-solid fa-user">
+
+
+        <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: 'sidebar-navbar' do %>
+        <span class="sidebar-icon-box fa-solid fa-user">
           </span>
-            <p class="nav-txt-box">Logout</p>
-        </a>
+           <p class="nav-txt-box">Logout</p>
+        <% end %>
         <% else %>
         <a href="/users/sign_in" class="sidebar-navbar">
           <span class="sidebar-icon-box fa-solid fa-user">

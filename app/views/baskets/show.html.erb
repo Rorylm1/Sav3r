@@ -118,38 +118,44 @@
 
 
 <%# The original basket page %>
+
 <% else %>
   <% @items.each do |order| %>
-  <br>
-    <li> <%= order.item.name %> x<%= order.quantity %></li>
-    <li> <%= order.item.brand %></li>
-    <li> <img src="<%= order.item.image %>" alt=""></li>
+<div class="cards">
+  <div class="each-card" style="height:100%; display:block">
+    <div class="flex" style="width:100%">
+        <div class="image"><img src="<%= order.item.image %>" alt=""></li>
+        </div>
+        <div style="padding-left: 20px" class="name-and-price">
+          <li> <%= order.item.brand %> <%= order.item.name %> x<%= order.quantity %></li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Shops
+            </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <% order.item.shops.each do |shop| %>
 
-    <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Shops
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <% order.item.shops.each do |shop| %>
-
-    <div class="dropdown-item" ><%= shop.name %>
-    <% if order.quantity? %>
-    <p>£ <%= '%.2f' % (shop.price * order.quantity).round(2) %></p>
-    <% else %>
-    <p>£ <%= '%.2f' % shop.price %></p>
-    <% end %>
+                  <div class="dropdown-item" ><%= shop.name %>
+                    <% if order.quantity? %>
+                    <p>£ <%= '%.2f' % (shop.price * order.quantity).round(2) %></p>
+                    <% else %>
+                    <p>£ <%= '%.2f' % shop.price %></p>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+          </div>
+        </div>
     </div>
-    <% end %>
+            <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
+              <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
+              <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
+            <% end %>
+
+          <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
+          <% end %>
   </div>
 </div>
-    <br>
-    <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
-      <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
-      <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
-    <% end %>
-
-  <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
-  <% end %>
 
 </ul>
 <button type="button" class="btn btn-primary finalise-button" data-toggle="modal" data-target="#exampleModal">

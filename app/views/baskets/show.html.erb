@@ -63,7 +63,7 @@
 
 <div class="cards">
   <div class="each-card" style="height:100%; display:block">
-        <% if shopname_arr.include?(selected_shop) %>
+        <% if shopname_arr.include?(selected_shop) && order.quantity > 0%>
         <div class="flex" style="width:100%">
           <div class="image"> <img src="<%= order.item.image %>" alt="">
           </div>
@@ -88,7 +88,7 @@
   <% order.item.shops.each do |shop| %>
   <% shopname_arr.push shop.name %>
   <% end %>
-    <% if shopname_arr.include?(selected_shop) == false %>
+    <% if shopname_arr.include?(selected_shop) == false && order.quantity > 0%>
     <h2>Missing Items</h2>
       <div class="cards">
         <div class="each-card" style="height: 100%; display:block">
@@ -96,8 +96,8 @@
             <div class="image"><img src="<%= order.item.image %>" alt="">
             </div>
             <div style="padding-left: 20px" class="name-and-price">
-              <li> <%= order.item.name %> x<%= order.quantity %></li>
-              <li> <%= order.item.brand %></li>
+              <p><%= order.item.name %> x<%= order.quantity %></p>
+              <p></p><%= order.item.brand %></p>
               <% end %>
               <% end %>
             </div>

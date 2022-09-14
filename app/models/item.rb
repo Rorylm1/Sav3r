@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   has_many :shops
-  has_many :order_histories
+  has_many :order_histories, dependent: :destroy
   has_many :baskets, through: :order_histories
 
   CATEGORIES = ['baby-toddler-kids', 'bakery', 'beauty-cosmetics', 'chilled-food', 'drinks', 'food-cupboard',

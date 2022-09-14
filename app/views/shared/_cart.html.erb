@@ -17,9 +17,10 @@
 
     <div class="footer-side">
       <div class="text-red-bold">
-        <% if Basket.where(user_id: current_user).last.total_price %>
-        <p><strong>£ <%= '%.2f' % Basket.where(user_id: current_user).last.total_price %></strong></p>
-        <% end %>
+
+        <%# <% if Basket.where(user_id: current_user).last.total_price %>
+        <%# <p><strong>£ <%= '%.2f' % Basket.where(user_id: current_user).last.total_price %><%#</strong></p>   %>
+        <%# <% end %>
 
       </div>
     </div>

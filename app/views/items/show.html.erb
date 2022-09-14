@@ -1,6 +1,6 @@
 
 <div>
-  <p>Categories > <%= @item.category %> </p>
+  <p>Categories > <strong><%= link_to "#{@item.category.capitalize}", items_path(category: @item.category) %></strong> </p>
 </div>
 
 

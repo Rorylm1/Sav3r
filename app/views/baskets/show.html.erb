@@ -118,7 +118,7 @@
 
 <%= link_to 'Clear Basket', basket_path(@basket) , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
 
-  <% @items.each do |order| %>
+  <% @items.sort.each do |order| %>
 <div class="cards">
   <div class="each-card" style="height:100%; display:block">
     <div class="flex" style="width:100%">

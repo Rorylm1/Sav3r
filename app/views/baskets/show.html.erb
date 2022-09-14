@@ -52,6 +52,8 @@
   <%# title with specific shop img %>
 
   <h2>Shopping List for <%= selected_shop %></h2>
+  <%= link_to "Back to basket", "/baskets/#{@basket.id}", class: 'btn btn-success original-button' %>
+
 
       <% @items.each do |order| %>
       <% shopname_arr = [] %>
@@ -78,27 +80,28 @@
   </div>
 <% end %>
 </div>
+
   <%# Items that weren't included by your shop %>
-  <h2>Missing Items</h2>
+
   <% @items.each do |order| %>
   <% shopname_arr = [] %>
   <% order.item.shops.each do |shop| %>
   <% shopname_arr.push shop.name %>
   <% end %>
-<div class="cards">
-  <div class="each-card" style="height: 100%; display:block">
     <% if shopname_arr.include?(selected_shop) == false %>
-      <div class="flex" style="width:100%">
-          <div class="image"><img src="<%= order.item.image %>" alt="">
+    <h2>Missing Items</h2>
+      <div class="cards">
+        <div class="each-card" style="height: 100%; display:block">
+          <div class="flex" style="width:100%">
+            <div class="image"><img src="<%= order.item.image %>" alt="">
+            </div>
+            <div style="padding-left: 20px" class="name-and-price">
+              <li> <%= order.item.name %> x<%= order.quantity %></li>
+              <li> <%= order.item.brand %></li>
+              <% end %>
+              <% end %>
+            </div>
           </div>
-          <div style="padding-left: 20px" class="name-and-price">
-            <li> <%= order.item.name %> x<%= order.quantity %></li>
-            <li> <%= order.item.brand %></li>
-            <% end %>
-            <% end %>
-          </div>
-      </div>
-  <%= link_to "Go back to original", "/baskets/#{@basket.id}", class: 'btn btn-success original-button' %>
 
 
 <%# The original basket page %>

@@ -3,6 +3,10 @@
   text-align: center;
   margin-top: 10px;
 }
+.page-header{
+padding-top: 10px;
+padding-left: 20px;
+}
 
 .show-card {
   width: 100%;
@@ -101,6 +105,8 @@
 .view-basket {
   margin-top: 5px;
   width: 100%;
+  background-color: $yellow;
+  border-color: $yellow;
 }
 .basket-to {
   margin-top: 5px;

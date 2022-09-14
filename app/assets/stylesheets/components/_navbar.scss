@@ -19,7 +19,8 @@
 .search-form-control {
   display: flex;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
+
   height: 35px;
 }
 .form-control {
@@ -40,7 +41,6 @@
   background-color: $red;
   border: none;
 }
-
 .navbar-brand:hover {
   background-color: $red;
   border: none;
@@ -55,4 +55,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.btn-flat {
+  border: none;
+}
+.btn-flat:hover {
+  border: none
 }

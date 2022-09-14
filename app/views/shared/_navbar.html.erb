@@ -7,23 +7,24 @@
 
     </div>
 
-     <%= simple_form_for :search, url: items_path, method: :get do |f| %>
-      <div class="search-form-control form-group">
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
+    <div id="search-form">
+      <%= simple_form_for :search, url: items_path, method: :get do |f| %>
+        <div class="search-form-control form-group">
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
 
-        placeholder: "eg. Linseed bread..."
-        %>
+          placeholder: "eg. Linseed bread..."
+          %>
 
-        <button name="button" type="submit" class="btn btn-flat">
-          <i class="fas fa-search"></i>
-        </button>
+          <button name="button" type="submit" class="btn btn-flat">
+            <i class="fas fa-search"></i>
+          </button>
 
 
-      </div>
-    <% end %>
-
+        </div>
+      <% end %>
+    </div>
 
 
 

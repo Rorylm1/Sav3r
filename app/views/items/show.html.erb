@@ -1,8 +1,11 @@
 
+<% if @item.category.present? %>
 <div id="categ-div">
+
+
   <p>Categories > <strong><%= link_to "#{@item.category.capitalize}", items_path(category: @item.category), id: "categ-button" %></strong> </p>
 </div>
-
+<% end %>
 
 <div class="show-flex">
   <div class="show-card">

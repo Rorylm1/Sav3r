@@ -114,6 +114,16 @@
 
 <% else %>
 <h2>Your Cart</h2>
+<button type="button" class="btn btn-primary finalise-button" data-toggle="modal" data-target="#exampleModal">
+  Finalise Basket
+</button>
+
+
+
+
+
+<%= link_to 'Clear Basket', basket_path(@basket) , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
+
   <% @items.each do |order| %>
 <div class="cards">
   <div class="each-card" style="height:100%; display:block">
@@ -169,16 +179,7 @@
 
 
 </ul>
-<button type="button" class="btn btn-primary finalise-button" data-toggle="modal" data-target="#exampleModal">
-  Finalise Basket
-</button>
 <% end %>
-
-
-
-
-
-<%= link_to 'Clear Basket', basket_path(@basket) , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

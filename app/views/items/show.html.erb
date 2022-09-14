@@ -1,11 +1,8 @@
 
-<% if @item.category.present? %>
 <div id="categ-div">
-
-
   <p>Categories > <strong><%= link_to "#{@item.category.capitalize}", items_path(category: @item.category), id: "categ-button" %></strong> </p>
 </div>
-<% end %>
+
 
 <div class="show-flex">
   <div class="show-card">
@@ -29,9 +26,9 @@
         <% if user_signed_in? %>
         <%= form_with url: "/baskets/#{@basket.id}/items/#{@item.id}/order_histories", method: :post do |f|  %>
 
-        <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center; border-radius:5px;" , placeholder: "Insert quantity" %>
+        <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center;" , placeholder: "Insert quantity" %>
         <%= f.submit "Add to Basket" , class: 'btn btn-success text-white category-button basket-to', id: "basket" , style: ' background-color: #06D6A0; width: 100% '%>
-        <%= link_to 'View basket', basket_path(@basket), class: "btn btn-primary text-white view-basket basket" %>
+        <%= link_to 'View basket', basket_path(@basket), class: "btn btn-primary text-white view-basket basket"  %>
         <% end %>
 
         <% else %>

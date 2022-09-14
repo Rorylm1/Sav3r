@@ -105,8 +105,14 @@
   margin-top: 5px;
 }
 #categ-button {
-  padding: 10px;
-  background-color: aqua;
+  padding: 7px;
+  background-color: $red;
   text-transform: uppercase;
+  border-radius: 8px;
+  color: white;
+  transition: 0.1s ease-in;
+}
+#categ-div {
+  margin-top: 10px;
 
 }

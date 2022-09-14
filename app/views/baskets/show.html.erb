@@ -36,7 +36,7 @@
   <% end %>
 <%# calculation ends %>
 
-<ul>
+
 
 
 <%# This is whether you have finalised your basket or not %>
@@ -51,7 +51,7 @@
 
   <%# title with specific shop img %>
 
-  <h2> <%= selected_shop %> shopping list</h2>
+  <h2>Shopping List for <%= selected_shop %></h2>
 
       <% @items.each do |order| %>
       <% shopname_arr = [] %>
@@ -66,25 +66,18 @@
           <div class="image"> <img src="<%= order.item.image %>" alt="">
           </div>
             <div style="padding-left: 20px" class="name-and-price">
-              <p><%= order.item.brand %> <%= order.item.name %></p>
+              <p><%= order.quantity %> x <%= order.item.brand %> <%= order.item.name %></p>
                <% order.item.shops.each do |shop| %>
                 <% if shop.name == selected_shop %>
-                <%# <h4><%= shop.name %>
                   <p><strong>£<%= '%.2f' % (shop.price * order.quantity).round(2) %></strong></p>
                 <% end %>
                 <% end %>
             </div>
         </div>
-          <% end %>
-        <%# <div class="flex">
-          <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
-          <%# <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
-              <%# <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
-              <%# <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
-            <%# <% end %>
-        <%# </div> %>
-
-  <% end %>
+        <% end %>
+  </div>
+<% end %>
+</div>
   <%# Items that weren't included by your shop %>
   <h2>Missing Items</h2>
   <% @items.each do |order| %>
@@ -105,15 +98,13 @@
             <% end %>
           </div>
       </div>
-  </div>
-</div>
   <%= link_to "Go back to original", "/baskets/#{@basket.id}", class: 'btn btn-success original-button' %>
 
 
 <%# The original basket page %>
 
 <% else %>
-<h2>Your Cart</h2>
+<h2>Current Basket</h2>
 <button type="button" class="btn btn-primary finalise-button" data-toggle="modal" data-target="#exampleModal">
   Finalise Basket
 </button>
@@ -133,7 +124,7 @@
         <div style="padding-left: 20px" class="name-and-price">
           <p><%= order.item.brand %> <%= order.item.name %></p>
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="margin-left:0; padding-left:0"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Available at
             </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -178,7 +169,7 @@
   <%# <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
 
 
-</ul>
+
 <% end %>
 
 <!-- Modal -->

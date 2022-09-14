@@ -36,12 +36,12 @@
             <div class="name">
               <%= item.brand %> <%= item.name.first(30) %> <%= item.volume %> <br>
             </div>
-            <div class="flex">
+            <div class="flex" style="align-items:end">
               <div class="price">
                 <p><strong>£ <%='%.2f' % item.price %></strong></p>
               </div>
               <div class="btn btn-success btn-card">
-                <p>Add</p>
+                <div><p>Add</p></div>
               </div>
             </div>
           </div>

@@ -38,7 +38,7 @@
         <% end %>
 
         <% else %>
-        <%= link_to "Add to Basket", "/users/sign_up", class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post} %>
+        <%= link_to "Add to Basket", new_user_session_path, class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post} %>
           <% end %> <br>
       </div>
 

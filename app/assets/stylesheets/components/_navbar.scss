@@ -45,7 +45,9 @@
   background-color: $red;
   border: none;
 }
-
+.container-fluid {
+  justify-content: flex-start !important;
+}
 .navbar-toggler {
   border: none;
 }

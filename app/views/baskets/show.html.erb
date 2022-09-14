@@ -59,13 +59,14 @@
       <% shopname_arr.push shop.name %>
   <% end %>
 
-  <div class="each-card" style="height:200px; display:block">
+<div class="cards">
+  <div class="each-card" style="height:100%; display:block">
         <% if shopname_arr.include?(selected_shop) %>
         <div class="flex" style="width:100%">
           <div class="image"> <img src="<%= order.item.image %>" alt="">
           </div>
             <div style="padding-left: 20px" class="name-and-price">
-              <p><%= order.item.brand %> <%= order.item.name %> x<%= order.quantity %></p>
+              <p><%= order.item.brand %> <%= order.item.name %></p>
                <% order.item.shops.each do |shop| %>
                 <% if shop.name == selected_shop %>
                 <%# <h4><%= shop.name %>
@@ -75,14 +76,20 @@
             </div>
         </div>
           <% end %>
-        <div class="flex">
+        <%# <div class="flex">
           <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
-          <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
-              <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
-              <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
-            <% end %>
+          <%# <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
+              <%# <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
+              <%# <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
+            <%# <% end %>
+        <%# </div> %>
+        <div class="flex yellow-border">
+          <div style="margin-left: 7%; width: 40px"><strong>-</strong></div>
+          <div><%= order.quantity %> added</div>
+          <div style="margin-right: 7%; width: 40px"><strong>+</strong></div>
         </div>
   </div>
+ </div>
 
   <% end %>
   <%# Items that weren't included by your shop %>
@@ -92,8 +99,8 @@
   <% order.item.shops.each do |shop| %>
   <% shopname_arr.push shop.name %>
   <% end %>
-
-  <div class="each-card" style="height:200px; display:block">
+<div class="cards">
+  <div class="each-card" style="height: 100%; display:block">
     <% if shopname_arr.include?(selected_shop) == false %>
       <div class="flex" style="width:100%">
           <div class="image"><img src="<%= order.item.image %>" alt="">
@@ -105,6 +112,7 @@
             <% end %>
           </div>
       </div>
+  </div>
 </div>
   <%= link_to "Go back to original", "/baskets/#{@basket.id}", class: 'btn btn-success original-button' %>
 

@@ -1,6 +1,6 @@
 
 <div>
-  <p>Categories > <a id="categ-button" href="/items?category=<%= @item.category %>"><%= @item.category %></a> </p>
+  <p>Categories > <strong><%= link_to "#{@item.category.capitalize}", items_path(category: @item.category) %></strong> </p>
 </div>
 
 

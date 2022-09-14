@@ -61,14 +61,14 @@
 
 
 
-  <div class="cards">
+  <div class="each-card" style="height:200px; display:block">
         <% if shopname_arr.include?(selected_shop) %>
-        <br>
+
         <div class="flex" style="width:100%">
-          <div class="image"> <img src="<%= order.item.image %>" alt=""></div>
-            <div class="align-left">
-              <p><%= order.item.brand %></p>
-              <p><%= order.item.name %> x<%= order.quantity %></p>
+          <div class="image"> <img src="<%= order.item.image %>" alt="">
+          </div>
+            <div style="padding-left: 20px" class="name-and-price">
+              <p><%= order.item.brand %> <%= order.item.name %> x<%= order.quantity %></p>
                <% order.item.shops.each do |shop| %>
                 <% if shop.name == selected_shop %>
                 <%# <h4><%= shop.name %>
@@ -77,17 +77,13 @@
                 <% end %>
             </div>
         </div>
-
+          <% end %>
         <div class="flex">
           <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
           <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
               <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
               <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
             <% end %>
-
-
-          <% end %>
-          <br>
         </div>
   </div>
 

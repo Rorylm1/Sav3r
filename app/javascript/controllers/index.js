@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import AddQuantityController from "./add_quantity_controller"
-application.register("add-quantity", AddQuantityController)
+import AddItemController from "./add_item_controller"
+application.register("add-item", AddItemController)
 
 import CartController from "./cart_controller"
 application.register("cart", CartController)

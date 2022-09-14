@@ -22,7 +22,7 @@
       </div>
 
 </div>
-       <div class="basket-button">
+       <div class="basket-button" data-controller="add-item">
         <% if user_signed_in? %>
         <%= form_with url: "/baskets/#{@basket.id}/items/#{@item.id}/order_histories", method: :post do |f|  %>
 

@@ -81,13 +81,12 @@
 .shop-img img{
   margin: 0 auto;
   height: 25px;
-
-
 }
 .changed {
   background-color: aqua;
   margin-bottom: 50px;
 }
+
 .yellow-border{
   border: solid;
   border-color: $yellow;
@@ -97,4 +96,17 @@
   margin-bottom: 10px;
   width: 90%;
   margin-left: 5%;
+
+.view-basket {
+  margin-top: 5px;
+  width: 100%;
+}
+.basket-to {
+  margin-top: 5px;
+}
+#categ-button {
+  padding: 10px;
+  background-color: aqua;
+  text-transform: uppercase;
+
 }

@@ -1,6 +1,7 @@
 .navbar-lewagon {
-  justify-content: space-between;
-  background: #EF476F;
+
+
+  background: $red;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -17,6 +18,8 @@
 }
 .search-form-control {
   display: flex;
+  align-items: center;
+  justify-content: center;
   height: 35px;
 }
 .form-control {
@@ -30,13 +33,26 @@
   transition: .3s ease-in-out;
 }
 #search-button:hover {
-  background-color: #EF476F;
+  background-color: $red;
   border: none;
 }
 .navbar-brand {
-  background-color: #EF476F;
+  background-color: $red;
   border: none;
 }
+
+.navbar-brand:hover {
+  background-color: $red;
+  border: none;
+}
+
 .navbar-toggler {
   border: none;
+}
+
+.form-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

@@ -204,7 +204,7 @@
 
         <div class="flex yellow-border">
           <div style="margin-left: 7%; width: 40px"><strong><%= link_to '-', "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", data: {turbo_method: :delete}%></strong></div>
-          <div><%= order.quantity %> added</div>
+          <div><%= order.quantity %></div>
           <div style="margin-right: 7%; width: 40px"><strong><%= link_to '+', basket_item_order_history_path(@basket, order.item_id, order.id, change: 'add'), data: {turbo_method: :patch}%></strong></div>
         </div>
 

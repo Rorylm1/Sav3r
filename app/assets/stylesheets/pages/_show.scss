@@ -43,6 +43,10 @@ padding-left: 20px;
   align-items: center;
   width: 100%
 }
+.flex-start{
+  display: flex;
+  justify-content: flex-start;
+}
 
 .shop-info {
 
@@ -143,7 +147,15 @@ padding-top: 5px;
   width:150px;
   background-color: $green;
   color: white;
-  margin-left: 5%;
+  margin: 10px;
   border-color: $green;
+  border-radius: 5px;
+}
+.right-red{
+  width:150px;
+  background-color: $red;
+  color: white;
+  margin: 10px;
+  border-color: $red;
   border-radius: 5px;
 }

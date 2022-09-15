@@ -113,11 +113,11 @@
 <h2 class="page-header">Current Basket</h2>
 
 <div class="flex">
-  <div><button type="button" class="btn btn-primary finalise-button left-green" data-toggle="modal" data-target="#exampleModal">
+  <div style="margin-left:5%;><button type="button" class="btn btn-primary finalise-button left-green" data-toggle="modal" data-target="#exampleModal">
     Calculate  </button>
   </div>
-  <div>
-    <%= link_to 'Clear Basket', basket_path(@basket) , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
+  <div style="margin-right:5%;>
+    <%= link_to 'Clear Basket', basket_path(@basket) , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger right-red' %>
   </div>
 </div>
 
@@ -126,11 +126,11 @@
   <% if order.quantity > 0 %>
 <div class="cards">
   <div class="each-card" style="height:100%; display:block">
-    <div class="flex" style="width:100%">
+    <div class="flex-start" style="width:100%">
         <div class="image"><img src="<%= order.item.image %>" alt=""></li>
         </div>
         <div style="padding-left: 20px" class="name-and-price">
-          <p><%= order.item.brand %> <%= order.item.name %></p>
+          <p><%= order.item.brand %> <%= order.item.name %> <%= order.item.volume %></p>
           <div class="dropdown">
             <button style="margin-left:0; padding-left:0"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Available at

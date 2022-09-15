@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_094037) do
 
   create_table "baskets", force: :cascade do |t|
     t.float "total_price"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "completed"

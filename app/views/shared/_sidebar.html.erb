@@ -44,10 +44,12 @@
               <p class="bold-drk-text"> SUPER SAV£RS </p>
               <p class="btn-right-box">></p>
           </a>
-          <a href="<%= basket_path(@basket) %>"class="sidebar-btn">
-              <p class="bold-drk-text"> View Basket</p>
-              <p class="btn-right-box">></p>
-          </a>
+          <% if @basket.present? %>
+            <a href="<%= basket_path(@basket) %>"class="sidebar-btn">
+                <p class="bold-drk-text"> View Basket</p>
+                <p class="btn-right-box">></p>
+            </a>
+          <% end %>
 
 
       <% categories = Item::CATEGORIES %>

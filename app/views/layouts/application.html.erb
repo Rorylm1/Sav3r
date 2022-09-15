@@ -26,9 +26,6 @@
     <%= render "shared/navbar" unless current_page?(root_path(@page)) %>
     <%= render "shared/sidebar" %>
     <%= render "shared/cart", cart: @basket %>
-
-
-
     <%= render "shared/flashes" %>
 
     <%= yield %>

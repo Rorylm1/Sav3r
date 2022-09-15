@@ -1,4 +1,10 @@
-<% invalid = @basket.items.count == 0 || current_page?(basket_path(@basket)) || current_page?(root_path(@page)) || current_page?(item_path(@items || @item))%>
+<% if @items != nil %>
+<% if @items.size != 0 %>
+<% invalid = @basket.items.count == 0 || current_page?(basket_path(@basket)) || current_page?(root_path(@page)) || current_page?(item_path(@items || @item )) %>
+<% else  %>
+<% invalid = false %>
+<% end %>
+<% end %>
 <% if user_signed_in? && invalid == false %>
  <%= link_to basket_path(@basket) do %>
 

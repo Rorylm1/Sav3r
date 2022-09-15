@@ -1,7 +1,7 @@
 
 <div id="categ-div">
 <% if @item.category? %>
-  <p>Categories > <strong><%= link_to "#{@item.category.capitalize}", items_path(category: @item.category), id: "categ-button" %></strong> </p>
+  <p>Categories > <strong><%= link_to "#{@item.category.gsub("-", " ").capitalize}", items_path(category: @item.category), id: "categ-button" %></strong> </p>
   <% end %>
 </div>
 

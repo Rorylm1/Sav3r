@@ -1,4 +1,5 @@
 
+
 <div id="categ-div">
 <% if @item.category? %>
   <p>Categories > <strong><%= link_to "#{@item.category.gsub("-", " ").capitalize}", items_path(category: @item.category), id: "categ-button" %></strong> </p>
@@ -34,7 +35,8 @@
         <% end %>
 
         <% else %>
-        <%= link_to "Add to Basket", new_user_session_path, class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ', data: {turbo_method: :post} %>
+
+        <%= link_to "Add to Basket", new_user_registration_path, class: 'btn btn-success text-white category-button', style: ' width: 100%; background-color: #06D6A0; ' %>
           <% end %> <br>
       </div>
 

@@ -12,7 +12,7 @@ class OrderHistoriesController < ApplicationController
     @order_history.destroy
     @basket = Basket.find(params[:id])
     @items = @basket.order_histories
-    raise
+
     redirect_to basket_path, notice: 'Item was successfully removed', status: :see_other
 
   end

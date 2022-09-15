@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
         @basket.save
         session[:basket_id] = @basket.id
       end
-
+      @item = Item.last
   end
 
   def after_sign_in_path_for(resource)

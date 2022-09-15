@@ -1,6 +1,6 @@
 
 
-<% invalid = current_page?(basket_path(@basket)) || @basket.items.count == 0 || current_page?(root_path(@page)) || current_page?(item_path(@items || @item )) %>
+<% invalid = current_page?(basket_path(@basket)) || @basket.items.count == 0 || current_page?(root_path(@page))  %>
 
 
 <% if user_signed_in? && invalid == false %>

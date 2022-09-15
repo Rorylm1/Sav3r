@@ -108,15 +108,19 @@
 
 <% else %>
 <h2 class="page-header">Current Basket</h2>
-<button type="button" class="btn btn-primary finalise-button" data-toggle="modal" data-target="#exampleModal">
-  Calculate Savings
-</button>
+
+<div class="flex">
+  <div >
+    <button type="button" class="btn btn-primary finalise-button left-green" data-toggle="modal" data-target="#exampleModal">
+      Calculate
+    </button>
+  </div>
+  <div>
+    <%= link_to 'Clear Basket', basket_path(@basket) , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
+  </div>
+</div>
 
 
-
-
-
-<%= link_to 'Clear Basket', basket_path(@basket) , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
 
   <% @items.each do |order| %>
 <div class="cards">

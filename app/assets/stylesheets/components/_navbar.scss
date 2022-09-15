@@ -46,6 +46,15 @@
   border: none;
 }
 
+.container-fluid {
+  justify-content: flex-start !important;
+}
+
+.navbar-brand:focus {
+  background-color: $red;
+  border: none;
+}
+
 .navbar-toggler {
   border: none;
 }

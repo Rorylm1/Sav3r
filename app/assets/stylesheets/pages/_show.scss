@@ -100,6 +100,14 @@ padding-left: 20px;
   margin-bottom: 10px;
   width: 90%;
   margin-left: 5%;
+
+}
+
+.shop-list{
+width: 45%;
+margin-left: 5%;
+padding-left: 5px;
+padding-top: 5px;
 }
 
 .view-basket {
@@ -112,15 +120,24 @@ padding-left: 20px;
   margin-top: 5px;
 }
 #categ-button {
-  padding: 7px;
+  padding: 4px;
   background-color: $red;
   text-transform: uppercase;
-  border-radius: 8px;
+  border-radius: 5px;
   color: white;
+  font-size: smaller;
   transition: 0.1s ease-in;
 }
 #categ-div {
   margin-top: 10px;
+  padding-left: 8px;
+}
+.left-green{
+  margin-left: 15%;
+  background-color: $green;
+  border-color: $green;
+  border-radius: 5%;
+  width: 150px;
 }
 .left-green{
   width:150px;

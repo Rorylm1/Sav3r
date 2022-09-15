@@ -1,6 +1,8 @@
 
 <div id="categ-div">
-  <p>Categories > <strong><%= link_to "#{@item.category.capitalize}", items_path(category: @item.category), id: "categ-button" %></strong> </p>
+<% if @item.category? %>
+  <p>Categories > <strong><%= link_to "#{@item.category.gsub("-", " ").capitalize}", items_path(category: @item.category), id: "categ-button" %></strong> </p>
+  <% end %>
 </div>
 
 
@@ -26,9 +28,9 @@
         <% if user_signed_in? %>
         <%= form_with url: "/baskets/#{@basket.id}/items/#{@item.id}/order_histories", method: :post do |f|  %>
 
-        <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center; border-radius:5px;" , placeholder: "Insert quantity" %>
-        <%= f.submit "Add to Basket" , class: 'btn btn-success text-white category-button basket-to', id: "basket" , style: ' background-color: #06D6A0; width: 100% '%>
-        <%= link_to 'View basket', basket_path(@basket), class: "btn btn-primary text-white view-basket basket" %>
+        <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center; border-radius:5px" , placeholder: "Insert quantity" %>
+        <%= f.submit "Add to Basket" , class: 'btn btn-success text-white category-button basket-to', id: "basket" , style: ' background-color: #06D6A0; border-radius:5px; width: 100% '%>
+        <%= link_to 'View basket', basket_path(@basket), class: "btn btn-primary text-white view-basket basket", style: "border-radius:5px;"   %>
         <% end %>
 
         <% else %>
@@ -45,10 +47,8 @@
       <div class="shop-name">
         <p><strong>£<%= '%.2f' % shop.price %></strong></p>
       </div>
+
       <div class="shop-img">
-      <%# <% if Item::BRANDS.key?(shop.name) %>
-      <%# <%= image_tag cl_image_path(Item::BRANDS[shop.name], crop: :fill) %>
-      <%# <% end %>
         <% case shop.name %>
           <% when "Poundland" %>
           <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/poundland_qppk9u.png", crop: :fill %>
@@ -67,7 +67,7 @@
           <% when "Ocado" %>
           <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662729912/r3ozdxdbhbf6yx6hsbpb.png", crop: :fill %>
           <% else %>
-          <p><%=  shop.name %></p>
+            <p><%=  shop.name %></p>
           <% end %>
         <% end %>
       </div>

@@ -39,7 +39,10 @@
 
 
 
+
 <%# This is whether you have finalised your basket or not %>
+
+
 <% if params[:shop].present? %>
   <% price_select = params[:shop]["shop"].reject(&:empty?)[0][1..-1].to_f %>
   <% selected_shop = "" %>
@@ -63,7 +66,7 @@
 
 <div class="cards">
   <div class="each-card" style="height:100%; display:block">
-        <% if shopname_arr.include?(selected_shop) %>
+        <% if shopname_arr.include?(selected_shop) && order.quantity > 0%>
         <div class="flex" style="width:100%">
           <div class="image"> <img src="<%= order.item.image %>" alt="">
           </div>
@@ -88,7 +91,7 @@
   <% order.item.shops.each do |shop| %>
   <% shopname_arr.push shop.name %>
   <% end %>
-    <% if shopname_arr.include?(selected_shop) == false %>
+    <% if shopname_arr.include?(selected_shop) == false && order.quantity > 0%>
     <h2>Missing Items</h2>
       <div class="cards">
         <div class="each-card" style="height: 100%; display:block">
@@ -96,8 +99,8 @@
             <div class="image"><img src="<%= order.item.image %>" alt="">
             </div>
             <div style="padding-left: 20px" class="name-and-price">
-              <li> <%= order.item.name %> x<%= order.quantity %></li>
-              <li> <%= order.item.brand %></li>
+              <p><%= order.item.name %> x<%= order.quantity %></p>
+              <p></p><%= order.item.brand %></p>
               <% end %>
               <% end %>
             </div>
@@ -110,10 +113,8 @@
 <h2 class="page-header">Current Basket</h2>
 
 <div class="flex">
-  <div >
-    <button type="button" class="btn btn-primary finalise-button left-green" data-toggle="modal" data-target="#exampleModal">
-      Calculate
-    </button>
+  <div><button type="button" class="btn btn-primary finalise-button left-green" data-toggle="modal" data-target="#exampleModal">
+    Calculate  </button>
   </div>
   <div>
     <%= link_to 'Clear Basket', basket_path(@basket) , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
@@ -121,8 +122,8 @@
 </div>
 
 
-
-  <% @items.each do |order| %>
+  <% @items.sort.each do |order| %>
+  <% if order.quantity > 0 %>
 <div class="cards">
   <div class="each-card" style="height:100%; display:block">
     <div class="flex" style="width:100%">
@@ -163,7 +164,29 @@
           <div style="margin-right: 7%; width: 40px"><strong><%= link_to '+', basket_item_order_history_path(@basket, order.item_id, order.id, change: 'add'), data: {turbo_method: :patch}%></strong></div>
         </div>
 
+
   </div>
+  <% else %>
+      <% link_to basket_item_order_history_path(@basket, order.item_id, order.id), data: { turbo_method: :delete } %>
+ <% all_shop_names = [] %>
+
+  <% @items.each do |order| %>
+  <% order.item.shops.each do |shop|%>
+  <% all_shop_names.push shop.name %>
+  <% end %>
+  <% end %>
+
+
+
+  <% shop_count = {} %>
+
+  <% @items.each do |order| %>
+  <% order.item.shops.each do |shop|%>
+  <% shop_count[shop.name] = all_shop_names.count(shop.name) %>
+  <% end %>
+  <% end %>
+
+    <% end %>
   <% end %>
   </div>
 </div>
@@ -184,7 +207,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"> Cheapest Shops given your basket </h5>
+        <h5 class="modal-title" id="exampleModalLabel"> Price comparisons:</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -193,9 +216,38 @@
       <%= simple_form_for :shop, url: "/baskets/#{@basket.id}", method: :get do |f| %>
       <% all_shop_names.uniq.sort.each do |shop| %>
       <% if shop_count[shop].to_f / @items.size >= 0.75 %>
-      <%= shop %>
 
-      <%= f.input :shop , collection: [number_to_currency(item_totals[shop], unit: "£")], as: :check_boxes, legend_tag: false %>
+      <div class="yellow-border shop-list">
+
+          <div class="shop-img">
+             <% case shop %>
+              <% when "Poundland" %>
+              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/poundland_qppk9u.png", crop: :fill %>
+              <% when "Sainsbury's" %>
+              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/sainsbury_s_en8ssv.png", crop: :fill %>
+              <% when "Tesco" %>
+              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/tesco_w6rgal.png", crop: :fill %>
+              <% when "ALDI" %>
+              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/aldi_xcjrv8.png", crop: :fill %>
+              <% when "Asda" %>
+              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/asda_v6kw5g.png", crop: :fill %>
+              <% when "Co-op" %>
+              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662655318/co-op_wjaopn.png", crop: :fill %>
+              <% when "Morrisons" %>
+              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/morrisons_blzsz4.png", crop: :fill %>
+              <% when "Ocado" %>
+              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662729912/r3ozdxdbhbf6yx6hsbpb.png", crop: :fill %>
+              <% else %>
+                <p><%=  shop %></p>
+              <% end %>
+          </div>
+
+          <div> <%= shop_count[shop]%>/<%=@items.size%> items</div>
+          <div>
+            <p><%= f.input :shop , collection: [number_to_currency(item_totals[shop], unit: "£")], as: :check_boxes, legend_tag: false %></p>
+          </div>
+
+      </div>
 
       <% end %>
       <% end %>

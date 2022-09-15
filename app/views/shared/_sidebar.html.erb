@@ -44,8 +44,8 @@
               <p class="bold-drk-text"> SUPER SAV£RS </p>
               <p class="btn-right-box">></p>
           </a>
-          <a href="INSERT LINK"class="sidebar-btn">
-              <p class="bold-drk-text"> Previous baskets </p>
+          <a href="<%= basket_path(@basket) %>"class="sidebar-btn">
+              <p class="bold-drk-text"> View Basket</p>
               <p class="btn-right-box">></p>
           </a>
 
@@ -53,7 +53,7 @@
       <% categories = Item::CATEGORIES %>
       <% categories.each do |category| %>
         <%= link_to items_path(category: category), class: "sidebar-btn" do%>
-          <p style="font-weight:normal"class="bold-drk-text"> <%= category.capitalize %></p>
+          <p style="font-weight:normal"class="bold-drk-text"> <%= category.gsub("-", " ").capitalize %></p>
           <p class="btn-right-box">></p>
         <% end %>
       <% end %>

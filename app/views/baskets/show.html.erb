@@ -122,9 +122,9 @@
 </div>
 <% end %>
 
-<div class="cards">
   <% @items.sort.each do |order| %>
   <% if order.quantity > 1 %>
+<div class="cards">
   <div class="each-card" style="height:100%; display:block">
     <div class="flex-start" style="width:100%">
         <div class="image"><img src="<%= order.item.image %>" alt=""></li>
@@ -166,18 +166,15 @@
 
 
   </div>
-</div>
-
-
   <% elsif order.quantity == 1 %>
       <%# <% link_to "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", data: { turbo_method: :delete } %>
-  <div class="cards">
-    <div class="each-card" style="height:100%; display:block">
-      <div class="flex" style="width:100%">
-          <div class="image"><img src="<%= order.item.image %>" alt=""></li>
-          </div>
+      <div class="cards">
+  <div class="each-card" style="height:100%; display:block">
+    <div class="flex" style="width:100%">
+        <div class="image"><img src="<%= order.item.image %>" alt=""></li>
+        </div>
         <div style="padding-left: 20px" class="name-and-price">
-            <p><%= order.item.brand %> <%= order.item.name %></p>
+          <p><%= order.item.brand %> <%= order.item.name %></p>
           <div class="dropdown">
             <button style="margin-left:0; padding-left:0"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Available at
@@ -197,13 +194,7 @@
               </div>
           </div>
         </div>
-      </div>
-        <div class="flex yellow-border">
-          <div style="margin-left: 7%; width: 40px"><strong><%= link_to '-', "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", data: {turbo_method: :delete}%></strong></div>
-          <div><strong><%= order.quantity %></strong></div>
-          <div style="margin-right: 7%; width: 40px"><strong><%= link_to '+', basket_item_order_history_path(@basket, order.item_id, order.id, change: 'add'), data: {turbo_method: :patch}%></strong></div>
-        </div>
-     </div>
+    </div>
             <%# <%= form_with url: "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", method: :patch do |f|  %>
               <%# <%= f.number_field :quantity, :required => 'required', style: "width: 100%; text-align: center" , placeholder: "Change Quantity" %>
               <%# <%= f.submit "Update", style: ' background-color: #06D6A0; width: 100% '%>
@@ -211,6 +202,11 @@
 
           <%# <%= link_to 'Remove Item',  "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}" , data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } , class: 'btn btn-danger ', style: 'margin: 10px;' %>
 
+        <div class="flex yellow-border">
+          <div style="margin-left: 7%; width: 40px"><strong><%= link_to '-', "/baskets/#{@basket.id}/items/#{order.item_id}/order_histories/#{order.id}", data: {turbo_method: :delete}%></strong></div>
+          <div><strong><%= order.quantity %></strong></div>
+          <div style="margin-right: 7%; width: 40px"><strong><%= link_to '+', basket_item_order_history_path(@basket, order.item_id, order.id, change: 'add'), data: {turbo_method: :patch}%></strong></div>
+        </div>
 
 
 

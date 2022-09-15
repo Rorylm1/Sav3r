@@ -67,11 +67,11 @@
 <div class="cards">
         <% if shopname_arr.include?(selected_shop) && order.quantity > 0%>
   <div class="each-card" style="height:100%; display:block">
-        <div class="flex" style="width:100%">
+        <div style="width:100%;display:flex;justify-content:start">
           <div class="image"> <img src="<%= order.item.image %>" alt="">
           </div>
 
-            <div style="padding-left: 20px" class="name-and-price">
+            <div style="padding-left: 20px; padding-right:10px; padding-top:10px" class="name-and-price">
               <p><%= order.quantity %> x <%= order.item.brand %> <%= order.item.name %></p>
                <% order.item.shops.each do |shop| %>
                 <% if shop.name == selected_shop %>
@@ -88,7 +88,7 @@
 
   <%# Items that weren't included by your shop %>
 
-    <h2>Items not available at <%= selected_shop %></h2>
+    <h2 class="page-header">Items not available at <%= selected_shop %></h2>
   <% @items.each do |order| %>
   <% shopname_arr = [] %>
   <% order.item.shops.each do |shop| %>
@@ -102,7 +102,7 @@
             <div class="image"><img src="<%= order.item.image %>" alt="">
             </div>
 
-            <div style="padding-left: 20px" class="name-and-price">
+            <div style="padding-top: 10px; padding-right: 10px" class="name-and-price">
               <p><%= order.item.brand %><%= order.item.name %></p>
               <% end %>
             </div>

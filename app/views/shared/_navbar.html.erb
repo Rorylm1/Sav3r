@@ -6,7 +6,7 @@
       </button>
 
     </div>
-
+    <% food_eg = ["Linseed bread...", "Pork teriyaki...", "Vegan salmon...", "CBD oil...", "Apple cider vinegar...", "Baked beans...", "Chicken soup..."] %>
     <div id="search-form">
       <%= simple_form_for :search, url: items_path, method: :get do |f| %>
         <div class="search-form-control form-group">
@@ -14,7 +14,7 @@
           params[:query],
           class: "form-control",
 
-          placeholder: "eg. Linseed bread..."
+          placeholder: "e.g. #{food_eg.sample}"
           %>
 
           <button name="button" type="submit" class="btn btn-flat">

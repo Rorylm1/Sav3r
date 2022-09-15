@@ -54,7 +54,7 @@
 
   <%# title with specific shop img %>
 
-  <h2>Shopping List for <%= selected_shop %></h2>
+  <h2 class="page-header">Shopping List for <%= selected_shop %></h2>
   <%= link_to "Back to basket", "/baskets/#{@basket.id}", class: 'btn btn-success original-button left-green' %>
 
 
@@ -65,11 +65,12 @@
   <% end %>
 
 <div class="cards">
-  <div class="each-card" style="height:100%; display:block">
         <% if shopname_arr.include?(selected_shop) && order.quantity > 0%>
+  <div class="each-card" style="height:100%; display:block">
         <div class="flex" style="width:100%">
           <div class="image"> <img src="<%= order.item.image %>" alt="">
           </div>
+
             <div style="padding-left: 20px" class="name-and-price">
               <p><%= order.quantity %> x <%= order.item.brand %> <%= order.item.name %></p>
                <% order.item.shops.each do |shop| %>
@@ -81,31 +82,34 @@
         </div>
         <% end %>
   </div>
-<% end %>
+
 </div>
+<% end %>
 
   <%# Items that weren't included by your shop %>
 
+    <h2>Items not available at <%= selected_shop %></h2>
   <% @items.each do |order| %>
   <% shopname_arr = [] %>
   <% order.item.shops.each do |shop| %>
   <% shopname_arr.push shop.name %>
   <% end %>
     <% if shopname_arr.include?(selected_shop) == false && order.quantity > 0%>
-    <h2>Missing Items</h2>
       <div class="cards">
         <div class="each-card" style="height: 100%; display:block">
           <div class="flex" style="width:100%">
+
             <div class="image"><img src="<%= order.item.image %>" alt="">
             </div>
+
             <div style="padding-left: 20px" class="name-and-price">
-              <p><%= order.item.name %> x<%= order.quantity %></p>
-              <p></p><%= order.item.brand %></p>
-              <% end %>
+              <p><%= order.item.brand %><%= order.item.name %></p>
               <% end %>
             </div>
           </div>
-
+        </div>
+      </div>
+              <% end %>
 
 <%# The original basket page %>
 
@@ -173,7 +177,7 @@
         <div class="image"><img src="<%= order.item.image %>" alt=""></li>
         </div>
         <div style="padding-left: 20px" class="name-and-price">
-          <p><%= order.item.brand %> <%= order.item.name %></p>
+          <p><%= order.item.brand %> <%= order.item.name %> <%= order.item.volume %></p>
           <div class="dropdown">
             <button style="margin-left:0; padding-left:0; border-radius:5px; " class="btn btn-secondary p-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style= "border-radius: 5px">
               Available at
@@ -250,62 +254,68 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"> Price comparisons:</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+
       </div>
+
       <div class="modal-body">
-      <%= simple_form_for :shop, url: "/baskets/#{@basket.id}", method: :get do |f| %>
-      <% all_shop_names.uniq.sort.each do |shop| %>
-      <% if shop_count[shop].to_f / @items.size >= 0.5 %>
+        <%= simple_form_for :shop, url: "/baskets/#{@basket.id}", method: :get do |f| %>
+        <% all_shop_names.uniq.sort.each do |shop| %>
+        <% if shop_count[shop].to_f / @items.size >= 0.5 %>
 
-      <div class="yellow-border shop-list">
+        <div class="flex">
+          <div class="yellow-border shop-list">
 
-          <div class="shop-img">
-             <% case shop %>
-              <% when "Poundland" %>
-              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/poundland_qppk9u.png", crop: :fill %>
-              <% when "Sainsbury's" %>
-              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/sainsbury_s_en8ssv.png", crop: :fill %>
-              <% when "Tesco" %>
-              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/tesco_w6rgal.png", crop: :fill %>
-              <% when "ALDI" %>
-              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/aldi_xcjrv8.png", crop: :fill %>
-              <% when "Asda" %>
-              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/asda_v6kw5g.png", crop: :fill %>
-              <% when "Co-op" %>
-              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662655318/co-op_wjaopn.png", crop: :fill %>
-              <% when "Morrisons" %>
-              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/morrisons_blzsz4.png", crop: :fill %>
-              <% when "Ocado" %>
-              <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662729912/r3ozdxdbhbf6yx6hsbpb.png", crop: :fill %>
-              <% else %>
-                <p><%=  shop %></p>
+              <div class="shop-img">
+                <% case shop %>
+                  <% when "Poundland" %>
+                  <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/poundland_qppk9u.png", crop: :fill %>
+                  <% when "Sainsbury's" %>
+                  <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/sainsbury_s_en8ssv.png", crop: :fill %>
+                  <% when "Tesco" %>
+                  <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/tesco_w6rgal.png", crop: :fill %>
+                  <% when "ALDI" %>
+                  <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/aldi_xcjrv8.png", crop: :fill %>
+                  <% when "Asda" %>
+                  <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/asda_v6kw5g.png", crop: :fill %>
+                  <% when "Co-op" %>
+                  <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662655318/co-op_wjaopn.png", crop: :fill %>
+                  <% when "Morrisons" %>
+                  <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662653128/morrisons_blzsz4.png", crop: :fill %>
+                  <% when "Ocado" %>
+                  <%= image_tag "https://res.cloudinary.com/dzhyyuft3/image/upload/v1662729912/r3ozdxdbhbf6yx6hsbpb.png", crop: :fill %>
+                  <% else %>
+                    <p><%=  shop %></p>
+                  <% end %>
+              </div>
+
+              <div>
+                <p><%= shop_count[shop]%>/<%=@items.size%> items</p>
+              </div>
+
+              <div>
+                <p><%= f.input :shop , collection: [number_to_currency(item_totals[shop], unit: "£")], as: :check_boxes, legend_tag: false %></p>
+              </div>
+
+        </div>
+
+            </div>
               <% end %>
+              <% end %>
+              <%= f.button :submit, class: 'btn btn-outline-success left-green'  %>
+              <% end %>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Back to basket</button>
+            </div>
           </div>
-
-          <div> <%= shop_count[shop]%>/<%=@items.size%> items</div>
-          <div>
-            <p><%= f.input :shop , collection: [number_to_currency(item_totals[shop], unit: "£")], as: :check_boxes, legend_tag: false %></p>
-          </div>
-
-      </div>
-
-      <% end %>
-      <% end %>
-      <%= f.button :submit, class: 'btn btn-outline-success'  %>
-      <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
       </div>
     </div>
   </div>
 </div>
-
 <% total_price = 0 %>
   <% @items.each do |item|%>
   <% total_price += item.item.price * item.quantity%>
